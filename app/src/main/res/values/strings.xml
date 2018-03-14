@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Kronicle</string>
+    <string name="name_string">Name</string>
+    <string name="last_name_string">Last Name</string>
+    <string name="email_string">Email Address</string>
+    <string name="password_string">Password</string>
 </resources>
