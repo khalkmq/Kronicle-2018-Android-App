@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <!-- LinearLayout changes take place here, on top.-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.everb.kronicle.MainActivity">
+    tools:context="com.example.everb.kronicle.MainActivity"
+    android:orientation="vertical">
 
-    <TextView
+
+    <!-- App Top Bar /MODIFY THIS TO RESIZE THE BAR ON SWIPE/ -->
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_gravity="center"
+    android:elevation="0dp"
+    android:id="@+id/appbarid">
+
+    <!-- Place logo file here if we finalize design.
+        Place FILENAME.png in drawable, and change it here
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="10dp"
+        android:src="@drawable/FILENAME"/>
+    -->
 
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.AppBarLayout>
+
+
+    <!-- Tab Layout -->
+<android.support.design.widget.TabLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:tabGravity="fill"
+    app:tabMode="fixed"
+    android:id="@+id/tablayout_id"
+    android:background="@color/tabbackgroundcolor"
+    app:tabTextColor="@color/tabtextcolor"
+    app:tabSelectedTextColor="@color/tabindictorcolor"/>
+
+
+    <!-- Page Viewer -->
+<android.support.v4.view.ViewPager
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/viewpager_id">
+</android.support.v4.view.ViewPager>
+
+
+</LinearLayout>
