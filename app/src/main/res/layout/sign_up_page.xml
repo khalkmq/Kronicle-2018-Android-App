@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
 
     <EditText
         android:id="@+id/name_text_su"
@@ -51,9 +52,37 @@
         android:ems="10"
         android:hint="@string/password_string"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/password_comfirm_text_su"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_text_su" />
+
+    <EditText
+        android:id="@+id/password_comfirm_text_su"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/comfirm_password_string"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/submit_button_su"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_text_su" />
+
+    <Button
+        android:id="@+id/submit_button_su"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="@string/submit_string"
+        android:textColor="?attr/actionModeSplitBackground"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_comfirm_text_su"
+        tools:text="@string/submit_string" />
 </android.support.constraint.ConstraintLayout>

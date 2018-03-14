@@ -4,4 +4,6 @@
     <string name="last_name_string">Last Name</string>
     <string name="email_string">Email Address</string>
     <string name="password_string">Password</string>
+    <string name="comfirm_password_string">Comfirm Password</string>
+    <string name="submit_string">Submit</string>
 </resources>
