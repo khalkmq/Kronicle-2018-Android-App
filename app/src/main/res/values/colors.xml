@@ -2,5 +2,8 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="tabtextcolor">#ffffff</color>
+    <color name="tabindictorcolor">#FF7000</color>
+    <color name="tabbackgroundcolor">#3d3d3d</color>
     <color name="colorAccent">#FF4081</color>
 </resources>

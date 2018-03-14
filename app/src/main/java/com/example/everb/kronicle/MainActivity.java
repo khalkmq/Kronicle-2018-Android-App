@@ -8,6 +8,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up_page);
+        setContentView(R.layout.activity_main);
+        int x;
+        boolean xx;
     }
+
+    int y;
 }
