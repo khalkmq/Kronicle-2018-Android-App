@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.everb.kronicle.MainActivity"
+    android:background="@color/colorSecondary"
     android:orientation="vertical">
 
 
@@ -16,6 +17,7 @@
     android:layout_height="100dp"
     android:layout_gravity="center"
     android:elevation="0dp"
+    android:background="@color/colorPrimaryDark"
     android:id="@+id/appbarid">
 
     <!-- Place logo file here if we finalize design.
@@ -37,9 +39,9 @@
     app:tabGravity="fill"
     app:tabMode="fixed"
     android:id="@+id/tablayout_id"
-    android:background="@color/tabbackgroundcolor"
-    app:tabTextColor="@color/tabtextcolor"
-    app:tabSelectedTextColor="@color/tabindictorcolor"/>
+    android:background="@color/colorSecondaryLight"
+    app:tabTextColor="@color/colorAccentTwo"
+    app:tabSelectedTextColor="@color/colorAccentOne"/>
 
 
     <!-- Page Viewer -->
