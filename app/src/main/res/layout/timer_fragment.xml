@@ -1,19 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- Fragment Content -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteY="25dp">
 
-    <!-- Content goes here -->
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/countdown_text_timer"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:text="Timer Fragment"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        />
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="120dp"
+        android:text="00:00"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccentOne"
+        android:textSize="90sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_button_timer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/start_button_timer"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@android:color/transparent"
+        android:text="@string/start_string"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/reset_button_timer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="@string/start_string" />
+
+    <Button
+        android:id="@+id/reset_button_timer"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:background="@android:color/transparent"
+        android:text="@string/reset_string"
+        android:textColor="@color/colorAccentTwo"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="@string/reset_string" />
+</android.support.constraint.ConstraintLayout>

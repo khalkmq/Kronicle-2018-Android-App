@@ -6,4 +6,7 @@
     <string name="password_string">Password</string>
     <string name="comfirm_password_string">Comfirm Password</string>
     <string name="submit_string">Submit</string>
+    <string name="start_string">Start</string>
+    <string name="reset_string">Reset</string>
+    <string name="pause_string">Pause</string>
 </resources>
