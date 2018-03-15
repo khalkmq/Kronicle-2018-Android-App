@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class FragmentHabits extends Fragment{
-    int x;
 
     View view;
 
