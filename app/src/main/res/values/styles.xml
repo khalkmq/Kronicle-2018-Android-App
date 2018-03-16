@@ -1,14 +1,8 @@
 <resources>
-    <!-- Please note, the NoActionBar is ESSENTIAL for the hamburger icon to work -->
-
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccentOne</item>
         <item name="titleTextColor">@color/colorSecondaryLight</item>
     </style>
-
 </resources>
