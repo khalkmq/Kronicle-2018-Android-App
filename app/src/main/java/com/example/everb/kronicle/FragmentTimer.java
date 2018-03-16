@@ -8,17 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Locale;
 
 public class FragmentTimer extends Fragment{
 
-    private static final long start_time_milli = 600000;
+    private long start_time_milli = 600000;
 
     private TextView textCountDown;
     private Button buttonStart;
     private Button buttonReset;
+    private ImageButton buttonSettings;
 
     private CountDownTimer mCountDownTimer;
 
@@ -43,6 +45,8 @@ public class FragmentTimer extends Fragment{
         buttonStart = view.findViewById(R.id.start_button_timer);
 
         buttonReset = view.findViewById(R.id.reset_button_timer);
+
+        buttonSettings = view.findViewById(R.id.settings_button_timer);
 
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
