@@ -15,7 +15,6 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tablayout;
-    private AppBarLayout appBarLayout;
     private ViewPager viewPager;
     private DrawerLayout mDrawerLayout;
 
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
         /* Create the tabLayout with fragments */
         tablayout = (TabLayout) findViewById(R.id.tablayout_id);
-        appBarLayout = (AppBarLayout) findViewById(R.id.appbarid);
         viewPager = (ViewPager) findViewById(R.id.viewpager_id);
 
         // Build Adapter object, and ADD ALL FRAGMENTS HERE
