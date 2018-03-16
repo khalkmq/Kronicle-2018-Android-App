@@ -1,55 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <!-- Linear Layout changes take place here, on top. -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <!-- Layout uses DrawerLayout as root. -->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.everb.kronicle.MainActivity"
-    android:background="@color/colorSecondary"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
+    <!--
+    tools:context="com.example.everb.kronicle.MainActivity"
+    android:background="@color/colorSecondary"
+    android:orientation="vertical" -->
 
-    <!-- App Top Bar /MODIFY THIS TO RESIZE THE BAR ON SWIPE/ -->
-<android.support.design.widget.AppBarLayout
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:layout_gravity="center"
-    android:elevation="0dp"
-    android:background="@color/colorPrimaryDark"
-    android:id="@+id/appbarid">
+    <!-- Layout containing main body of screen -->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <!-- Place logo file here if we finalize design.
+
+        <!-- App Top Bar /MODIFY THIS TO RESIZE THE BAR ON SWIPE/ -->
+        <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="top"
+        android:elevation="0dp"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/appbarid">
+
+        <!-- Place logo file here if we finalize design.
         Place FILENAME.png in drawable, and change it here
-    <ImageView
+        <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:src="@drawable/FILENAME"/>
-    -->
+        -->
 
-</android.support.design.widget.AppBarLayout>
-
-
-    <!-- Tab Layout -->
-<android.support.design.widget.TabLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:tabGravity="fill"
-    app:tabMode="fixed"
-    android:id="@+id/tablayout_id"
-    android:background="@color/colorSecondaryLight"
-    app:tabTextColor="@color/colorAccentTwo"
-    app:tabSelectedTextColor="@color/colorAccentOne"/>
+        </android.support.design.widget.AppBarLayout>
 
 
-    <!-- Page Viewer -->
-<android.support.v4.view.ViewPager
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/viewpager_id">
-</android.support.v4.view.ViewPager>
+        <!-- Tab Layout -->
+        <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="start"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        android:id="@+id/tablayout_id"
+        android:background="@color/colorSecondaryLight"
+        app:tabTextColor="@color/colorAccentTwo"
+        app:tabSelectedTextColor="@color/colorAccentOne"/>
 
 
-</LinearLayout>
+
+        <!-- Page Viewer -->
+        <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+        android:id="@+id/viewpager_id">
+        </android.support.v4.view.ViewPager>
+
+    </FrameLayout> <!-- end of main content code -->
+
+
+
+    <!-- Container for drawer/sidemenu contents -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawer_view"
+        app:headerLayout="@layout/nav_header"/>
+
+
+</android.support.v4.widget.DrawerLayout>
