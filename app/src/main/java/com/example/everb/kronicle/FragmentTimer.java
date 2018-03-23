@@ -86,7 +86,7 @@ public class FragmentTimer extends Fragment{
             @Override
             public void onFinish() {
                 timerActive = false;
-                buttonStart.setText(R.string.start_string);
+                buttonStart.setText(R.string.start);
                 buttonStart.setVisibility(View.INVISIBLE);
                 buttonReset.setVisibility(View.VISIBLE);
             }
@@ -94,7 +94,7 @@ public class FragmentTimer extends Fragment{
 
         timerActive = true;
         buttonStart.setTextColor(getResources().getColor(R.color.colorAccentThree));
-        buttonStart.setText(R.string.pause_string);
+        buttonStart.setText(R.string.pause);
         buttonReset.setVisibility(View.INVISIBLE);
     }
 
@@ -102,7 +102,7 @@ public class FragmentTimer extends Fragment{
         mCountDownTimer.cancel();
         timerActive = false;
         buttonStart.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-        buttonStart.setText(R.string.start_string);
+        buttonStart.setText(R.string.start);
         buttonReset.setVisibility(View.VISIBLE);
     }
 
