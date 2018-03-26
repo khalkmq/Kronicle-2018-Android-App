@@ -1,5 +1,7 @@
 package com.example.everb.kronicle;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tablayout;
     private ViewPager viewPager;
     private DrawerLayout mDrawerLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         tablayout = findViewById(R.id.tablayout_id);
         viewPager = findViewById(R.id.viewpager_id);
 
-        // Build Adapter object, Fragments go here
+        // Build Tab Adapter object, Fragments go here
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.AddFragment(new FragmentNotes(),"Notes");
         adapter.AddFragment(new FragmentTimer(),"Timer");

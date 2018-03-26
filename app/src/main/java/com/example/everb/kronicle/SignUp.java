@@ -1,5 +1,6 @@
 package com.example.everb.kronicle;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -56,18 +57,19 @@ public class SignUp extends AppCompatActivity {
                 }
 
                 // Check if the password and password confirmation match
-                if(!password.equals(passwordConfirm))
+                else if(!password.equals(passwordConfirm))
                 {
                     Toast.makeText(getApplicationContext(), "The passwords do not match", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                // If the requirements are met the account will be created
+                // If the requirements are met the account will be created, and page with redirect to main page.
                 else
                 {
                     // The user's information will be saved in the Database
                     loginDataBaseAdapter.insertEntry(name, lastName, email, password);
                     Toast.makeText(getApplicationContext(), "Account Created, Welcome to Kronicle!", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(SignUp.this, MainActivity.class));
                 }
             }
         });

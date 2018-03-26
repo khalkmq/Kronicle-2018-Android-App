@@ -16,4 +16,5 @@
     <string name="about">About</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
+    <string name="cont_guest">Continue as Guest</string>
 </resources>

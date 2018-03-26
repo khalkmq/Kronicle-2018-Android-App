@@ -5,11 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+/* This page is responsible for Singup/signin activity for the app */
 public class IntroPage extends AppCompatActivity {
 
     Button signInButton;
     Button signUpButton;
+    Button guestSignInButton;
+
     LoginDataBaseAdapter loginDataBaseAdapter;
 
     @Override
@@ -25,14 +29,27 @@ public class IntroPage extends AppCompatActivity {
         // Reference the buttons on the intro page
         signInButton = findViewById(R.id.sign_in_button_ip);
         signUpButton = findViewById(R.id.sign_up_button_ip);
+        guestSignInButton = findViewById(R.id.guest_sign_in_button_ip);
 
+        /* SIGN UP BUTTON CODE */
         // OnClick Listener for sign up button
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 // The Intent will take us to the sign up page
                 Intent signUpIntent = new Intent(getApplicationContext(),SignUp.class);
                 startActivity(signUpIntent);
+            }
+        });
+
+        /* SIGN IN BUTTON CODE */
+
+        /* GUEST BUTTON CODE */
+        guestSignInButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Creates Guest profile automatically, and redirects to MainActivity
+                loginDataBaseAdapter.insertEntry("Guest", "Guest", "Guest", "Guest");
+                Toast.makeText(getApplicationContext(), "Guest account created, Welcome to Kronicle!", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(IntroPage.this, MainActivity.class));
             }
         });
     }

@@ -7,6 +7,7 @@
     tools:context="com.example.everb.kronicle.IntroPage"
     tools:layout_editor_absoluteY="25dp">
 
+    <!-- SIGN IN BUTTON -->
     <Button
         android:id="@+id/sign_in_button_ip"
         android:layout_width="wrap_content"
@@ -21,6 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_ip" />
 
+    <!-- SIGN UP BUTTON -->
     <Button
         android:id="@+id/sign_up_button_ip"
         android:layout_width="wrap_content"
@@ -35,11 +37,33 @@
         app:layout_constraintStart_toEndOf="@+id/sign_in_button_ip"
         app:layout_constraintTop_toBottomOf="@+id/image_ip" />
 
+    <!-- GUEST BUTTON -->
+    <Button
+        android:id="@+id/guest_sign_in_button_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:text="@string/cont_guest"
+        android:textColor="@color/colorAccentThree"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_ip"
+        app:layout_constraintVertical_bias="0.882" />
+
     <ImageView
         android:id="@+id/image_ip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
