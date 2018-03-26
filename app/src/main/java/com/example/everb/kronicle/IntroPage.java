@@ -42,6 +42,7 @@ public class IntroPage extends AppCompatActivity {
         });
 
         /* SIGN IN BUTTON CODE */
+        // Add the code below here once its working
 
         /* GUEST BUTTON CODE */
         guestSignInButton.setOnClickListener(new View.OnClickListener() {

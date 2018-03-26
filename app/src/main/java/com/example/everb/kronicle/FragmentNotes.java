@@ -31,8 +31,7 @@ public class FragmentNotes extends Fragment {
             public void onClick(View v) {
 
                 // The Intent will take us to the sign up page
-                Intent signUpIntent = new Intent(getActivity(),IntroPage.class);
-                startActivity(signUpIntent);
+                startActivity(new Intent(getActivity(), IntroPage.class));
             }
         });
 

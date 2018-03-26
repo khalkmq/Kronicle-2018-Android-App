@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- MODIFY THIS TO CHANGE OUR SPLASH SCREEN -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/colorSecondaryDark"/>
+
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/k_image"/>
+    </item>
+
+</layer-list>
