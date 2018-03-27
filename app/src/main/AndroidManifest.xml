@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name_upper"
+        android:label="@string/kronicle_upper"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -31,9 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpPage" />
+        <activity android:name=".SignUp" />
         <activity android:name=".LandingPage" />
-        <activity android:name=".MyAccountPage"></activity>
+        <activity android:name=".MyAccount"></activity>
     </application>
 
 </manifest>

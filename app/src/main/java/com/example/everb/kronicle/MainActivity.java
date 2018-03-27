@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if (itemId == R.id.my_account_drawer) {
-                        Intent intent_my_account = new Intent(MainActivity.this, MyAccountPage.class);
+                        Intent intent_my_account = new Intent(MainActivity.this, MyAccount.class);
                         startActivity(intent_my_account);
                     }
 

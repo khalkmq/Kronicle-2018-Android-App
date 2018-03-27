@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Kronicle</string>
-    <string name="app_name_upper">KRONICLE</string>
+    <string name="kronicle">Kronicle</string>
+    <string name="kronicle_upper">KRONICLE</string>
 
     <string name="name">Name</string>
     <string name="last_name">Last Name</string>

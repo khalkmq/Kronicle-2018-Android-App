@@ -36,7 +36,7 @@ public class LandingPage extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // The Intent will take us to the sign up page
-                Intent signUpIntent = new Intent(getApplicationContext(),SignUpPage.class);
+                Intent signUpIntent = new Intent(getApplicationContext(),SignUp.class);
                 startActivity(signUpIntent);
             }
         });

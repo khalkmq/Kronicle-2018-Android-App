@@ -8,6 +8,17 @@
     tools:layout_editor_absoluteY="25dp">
 
     <!-- SIGN IN BUTTON -->
+
+    <ImageView
+        android:id="@+id/image_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/kronicle_layered_small" />
+
     <Button
         android:id="@+id/sign_in_button_ip"
         android:layout_width="wrap_content"
@@ -59,13 +70,4 @@
         app:layout_constraintTop_toBottomOf="@+id/image_ip"
         app:layout_constraintVertical_bias="0.882" />
 
-    <ImageView
-        android:id="@+id/image_ip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/kronicle_layered_small" />
 </android.support.constraint.ConstraintLayout>
