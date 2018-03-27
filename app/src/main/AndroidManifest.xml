@@ -32,8 +32,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SignUp" />
-        <activity android:name=".IntroPage" />
+        <activity android:name=".SignUpPage" />
+        <activity android:name=".LandingPage" />
 
     </application>
 

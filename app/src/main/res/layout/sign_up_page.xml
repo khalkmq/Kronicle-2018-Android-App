@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.everb.kronicle.SignUp"
+    tools:context="com.example.everb.kronicle.SignUpPage"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView
@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/k_image" />
+        app:srcCompat="@drawable/k_image_layered" />
 
     <EditText
         android:id="@+id/name_text_su"
@@ -75,7 +75,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/comfirm_password"
+        android:hint="@string/confirm_password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/sign_up_button_su"
         app:layout_constraintEnd_toEndOf="parent"

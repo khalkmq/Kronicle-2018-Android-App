@@ -1,8 +1,5 @@
 package com.example.everb.kronicle;
 
-import android.content.Intent;
-import android.os.Handler;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -24,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
 
         // Create the toolbar for the Hamburger
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -56,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Build Tab Adapter object, Fragments go here
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new FragmentNotes(),"Notes");
-        adapter.AddFragment(new FragmentTimer(),"Timer");
-        adapter.AddFragment(new FragmentHabits(),"Habits");
+        adapter.AddFragment(new FragmentNotes(),getString(R.string.notes));
+        adapter.AddFragment(new FragmentTimer(), getString(R.string.timer));
+        adapter.AddFragment(new FragmentHabits(), getString(R.string.habits));
 
         // Adapter Setup
         viewPager.setAdapter(adapter);

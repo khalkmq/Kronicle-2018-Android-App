@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 /* This page is responsible for Singup/signin activity for the app */
-public class IntroPage extends AppCompatActivity {
+public class LandingPage extends AppCompatActivity {
 
     Button signInButton;
     Button signUpButton;
@@ -20,7 +20,7 @@ public class IntroPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.intro_page);
+        setContentView(R.layout.landing_page);
 
         // Instance of SQLite Database
         loginDataBaseAdapter = new LoginDataBaseAdapter(this);
@@ -36,7 +36,7 @@ public class IntroPage extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // The Intent will take us to the sign up page
-                Intent signUpIntent = new Intent(getApplicationContext(),SignUp.class);
+                Intent signUpIntent = new Intent(getApplicationContext(),SignUpPage.class);
                 startActivity(signUpIntent);
             }
         });
@@ -50,7 +50,7 @@ public class IntroPage extends AppCompatActivity {
                 // Creates Guest profile automatically, and redirects to MainActivity
                 loginDataBaseAdapter.insertEntry("Guest", "Guest", "Guest", "Guest");
                 Toast.makeText(getApplicationContext(), "Guest account created, Welcome to Kronicle!", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(IntroPage.this, MainActivity.class));
+                startActivity(new Intent(LandingPage.this, MainActivity.class));
             }
         });
     }

@@ -38,7 +38,7 @@ public class FragmentTimer extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        view = inflater.inflate(R.layout.timer_fragment,container,false);
+        view = inflater.inflate(R.layout.fragment_timer,container,false);
 
         textCountDown = view.findViewById(R.id.countdown_text_timer);
 

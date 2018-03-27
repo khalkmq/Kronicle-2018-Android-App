@@ -13,8 +13,6 @@ public class FragmentNotes extends Fragment {
 
     View view;
 
-    Button signUpTest;
-
     // Constructor
     public FragmentNotes() {}
 
@@ -22,23 +20,7 @@ public class FragmentNotes extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        view = inflater.inflate(R.layout.notes_fragment,container,false);
-
-        signUpTest = view.findViewById(R.id.button_NF);
-
-        // OnClick Listener for sign up button
-        signUpTest.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                // The Intent will take us to the sign up page
-                startActivity(new Intent(getActivity(), IntroPage.class));
-            }
-        });
-
-
-
-
-
+        view = inflater.inflate(R.layout.fragment_notes,container,false);
         return view;
-}
+    }
 }

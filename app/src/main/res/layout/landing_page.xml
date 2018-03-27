@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.everb.kronicle.IntroPage"
+    tools:context="com.example.everb.kronicle.LandingPage"
     tools:layout_editor_absoluteY="25dp">
 
     <!-- SIGN IN BUTTON -->
@@ -48,7 +48,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
-        android:text="@string/cont_guest"
+        android:text="@string/continue_guest"
         android:textColor="@color/colorAccentThree"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"

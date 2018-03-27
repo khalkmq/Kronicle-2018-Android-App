@@ -18,7 +18,7 @@ public class FragmentHabits extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        view = inflater.inflate(R.layout.habit_fragment,container,false);
+        view = inflater.inflate(R.layout.fragment_habits,container,false);
         return view;
     }
 }

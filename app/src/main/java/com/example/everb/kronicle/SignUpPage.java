@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SignUp extends AppCompatActivity {
+public class SignUpPage extends AppCompatActivity {
 
     EditText nameText;
     EditText lastNameText;
@@ -23,7 +23,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up);
+        setContentView(R.layout.sign_up_page);
 
         // Instance of SQLite Database
         loginDataBaseAdapter = new LoginDataBaseAdapter(this);
@@ -69,7 +69,7 @@ public class SignUp extends AppCompatActivity {
                     // The user's information will be saved in the Database
                     loginDataBaseAdapter.insertEntry(name, lastName, email, password);
                     Toast.makeText(getApplicationContext(), "Account Created, Welcome to Kronicle!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(SignUp.this, MainActivity.class));
+                    startActivity(new Intent(SignUpPage.this, MainActivity.class));
                 }
             }
         });
