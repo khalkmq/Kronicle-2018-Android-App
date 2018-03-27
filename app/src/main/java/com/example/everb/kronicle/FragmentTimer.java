@@ -45,9 +45,7 @@ public class FragmentTimer extends Fragment{
         buttonStart = view.findViewById(R.id.start_button_timer);
 
         buttonReset = view.findViewById(R.id.reset_button_timer);
-
-        buttonSettings = view.findViewById(R.id.settings_button_timer);
-
+        
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

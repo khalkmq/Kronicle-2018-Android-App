@@ -12,7 +12,7 @@
 
         <!-- Splash Screen -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".SplashScreen"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,10 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".SignUpPage" />
         <activity android:name=".LandingPage" />
-
+        <activity android:name=".MyAccountPage"></activity>
     </application>
 
 </manifest>

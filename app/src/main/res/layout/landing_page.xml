@@ -67,5 +67,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/kronicle_image_small" />
+        app:srcCompat="@drawable/kronicle_layered_small" />
 </android.support.constraint.ConstraintLayout>

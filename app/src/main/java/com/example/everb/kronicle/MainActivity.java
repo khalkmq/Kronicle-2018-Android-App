@@ -1,5 +1,6 @@
 package com.example.everb.kronicle;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -37,12 +38,25 @@ public class MainActivity extends AppCompatActivity {
             new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(MenuItem menuItem) {
+
                     // Set item to Highlight
                     menuItem.setChecked(true);
+
                     // Close Side menu once clicked
                     mDrawerLayout.closeDrawers();
 
-                    // We should add code here to redirect the UI to the page
+                    // Determines which item was selected
+                    int itemId = menuItem.getItemId();
+
+                    if (itemId == R.id.home_drawer) {
+                        return true;
+                    }
+
+                    if (itemId == R.id.my_account_drawer) {
+                        Intent intent_my_account = new Intent(MainActivity.this, MyAccountPage.class);
+                        startActivity(intent_my_account);
+                    }
+
                     return true;
                 }
             });
@@ -62,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         tablayout.setupWithViewPager(viewPager);
     }
 
-    // Menu icon Click behaviour; Opens SideMenu/drawer
+    // Drawer menu icon behaviour
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
