@@ -5,10 +5,9 @@
 
     <item android:drawable="@drawable/pattern_background"/>
 
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/k"/>
-    </item>
-
+    <item
+        android:drawable="@drawable/k_simple"
+        android:height="200dp"
+        android:width="200dp"
+        android:gravity="center"/>
 </layer-list>
