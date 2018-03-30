@@ -3,12 +3,12 @@
 <!-- MODIFY THIS TO CHANGE OUR SPLASH SCREEN -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@color/colorSecondaryDark"/>
+    <item android:drawable="@drawable/pattern_background"/>
 
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/k_layered"/>
+            android:src="@drawable/k"/>
     </item>
 
 </layer-list>

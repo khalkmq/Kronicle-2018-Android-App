@@ -33,6 +33,7 @@ public class LandingPage extends AppCompatActivity {
 
         /* SIGN UP BUTTON CODE */
         // OnClick Listener for sign up button
+        boolean signUpClicked = false;
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // The Intent will take us to the sign up page

@@ -1,6 +1,7 @@
 package com.example.everb.kronicle;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        actionbar.setHomeAsUpIndicator(R.drawable.icon_menu);
 
         // Drawer-SideMenu Setup
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Build Tab Adapter object, Fragments go here
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new FragmentNotes(),getString(R.string.notes));
+        adapter.AddFragment(new FragmentNotes(), getString(R.string.notes));
         adapter.AddFragment(new FragmentTimer(), getString(R.string.timer));
         adapter.AddFragment(new FragmentHabits(), getString(R.string.habits));
 

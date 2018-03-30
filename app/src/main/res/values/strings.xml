@@ -25,5 +25,5 @@
 
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
-    <string name="continue_guest">Continue as Guest</string>
+    <string name="continue_guest">Continue as a Guest</string>
 </resources>

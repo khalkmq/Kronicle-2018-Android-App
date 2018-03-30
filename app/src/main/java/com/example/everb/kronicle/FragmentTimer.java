@@ -91,7 +91,7 @@ public class FragmentTimer extends Fragment{
         }.start();
 
         timerActive = true;
-        buttonStart.setTextColor(getResources().getColor(R.color.colorAccentThree));
+        buttonStart.setTextColor(getResources().getColor(R.color.colorHelperThree));
         buttonStart.setText(R.string.pause);
         buttonReset.setVisibility(View.INVISIBLE);
     }
@@ -99,7 +99,7 @@ public class FragmentTimer extends Fragment{
     private void pauseTimer() {
         mCountDownTimer.cancel();
         timerActive = false;
-        buttonStart.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        buttonStart.setTextColor(getResources().getColor(R.color.colorBase));
         buttonStart.setText(R.string.start);
         buttonReset.setVisibility(View.VISIBLE);
     }

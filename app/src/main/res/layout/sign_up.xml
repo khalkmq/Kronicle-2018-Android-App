@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/k_layered" />
+        app:srcCompat="@drawable/k" />
 
     <EditText
         android:id="@+id/name_text_su"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="@string/sign_up"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorBase"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
