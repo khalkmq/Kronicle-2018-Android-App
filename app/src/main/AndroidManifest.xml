@@ -24,15 +24,17 @@
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".SignUp" />
         <activity android:name=".LandingPage" />
-        <activity android:name=".MyAccount"></activity>
+        <activity android:name=".MyAccount" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Settings" />
+        <activity android:name=".About"></activity>
     </application>
 
 </manifest>

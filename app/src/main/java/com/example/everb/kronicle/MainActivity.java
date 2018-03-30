@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         // Drawer-SideMenu Setup
         mDrawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        // Will always have the home button selected
+        navigationView.getMenu().getItem(0).setChecked(true);
+
         navigationView.setNavigationItemSelectedListener(
             new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -56,6 +60,16 @@ public class MainActivity extends AppCompatActivity {
                     if (itemId == R.id.my_account_drawer) {
                         Intent intent_my_account = new Intent(MainActivity.this, MyAccount.class);
                         startActivity(intent_my_account);
+                    }
+
+                    if (itemId == R.id.settings_drawer) {
+                        Intent intent_settings = new Intent(MainActivity.this, Settings.class);
+                        startActivity(intent_settings);
+                    }
+
+                    if (itemId == R.id.about_drawer) {
+                        Intent intent_about = new Intent(MainActivity.this, About.class);
+                        startActivity(intent_about);
                     }
 
                     return true;
