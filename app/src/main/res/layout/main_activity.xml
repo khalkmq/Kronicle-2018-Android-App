@@ -51,6 +51,44 @@
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/colorHelperOne"
             app:tabTextColor="@color/colorBase" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="166dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/icon_notes" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="116dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/icon_timer" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_habits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="66dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/icon_habits" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            app:srcCompat="@drawable/icon_add" />
     </FrameLayout>
 
     <!-- Side Menu -->
@@ -62,4 +100,5 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu" />
+
 </android.support.v4.widget.DrawerLayout>
