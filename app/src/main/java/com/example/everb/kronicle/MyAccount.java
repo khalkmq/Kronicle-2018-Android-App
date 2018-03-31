@@ -48,8 +48,7 @@ public class MyAccount extends AppCompatActivity {
                 int itemId = menuItem.getItemId();
 
                 if (itemId == R.id.home_drawer) {
-                    Intent intent_home = new Intent(MyAccount.this, MainActivity.class);
-                    startActivity(intent_home);
+                    finish();
                 }
 
                 if (itemId == R.id.my_account_drawer) {
@@ -59,6 +58,7 @@ public class MyAccount extends AppCompatActivity {
                 if (itemId == R.id.settings_drawer) {
                     Intent intent_settings = new Intent(MyAccount.this, Settings.class);
                     startActivity(intent_settings);
+                    finish();
                 }
 
                 if (itemId == R.id.about_drawer) {
