@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Animation for Fab Menu
     private void animateFab() {
         if (isOpen) {
             fab.startAnimation(rotateBackward);

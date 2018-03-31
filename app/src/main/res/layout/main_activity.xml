@@ -24,7 +24,7 @@
             android:background="@color/colorBase"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
             <ImageView
-                android:id="@+id/logo_ma"
+                android:id="@+id/logo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
@@ -63,16 +63,6 @@
             app:srcCompat="@drawable/icon_notes" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="116dp"
-            android:layout_marginEnd="10dp"
-            android:visibility="invisible"
-            app:srcCompat="@drawable/icon_timer" />
-
-        <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_habits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,6 +79,16 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="10dp"
             app:srcCompat="@drawable/icon_add" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="116dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/icon_timer" />
     </FrameLayout>
 
     <!-- Side Menu -->
