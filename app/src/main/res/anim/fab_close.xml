@@ -3,22 +3,33 @@
     android:fillAfter="true">
     <scale
         android:duration="300"
-        android:fromXScale="0.8"
 
+        android:fromXScale="0.8"
         android:fromYScale="0.8"
-        android:interpolator="@android:anim/linear_interpolator"
 
         android:pivotX="50%"
         android:pivotY="50%"
 
         android:toXScale="0.0"
+        android:interpolator="@android:anim/linear_interpolator"
 
         android:toYScale="0.0" />
 
+    <rotate
+        android:duration="300"
+
+        android:fromDegrees="360"
+        android:interpolator="@android:anim/linear_interpolator"
+
+        android:pivotX="50%"
+        android:pivotY="50%"
+
+        android:toDegrees="0" />
+
     <alpha
         android:duration="300"
-        android:fromAlpha="0.0"
 
+        android:fromAlpha="1.0"
         android:interpolator="@android:anim/accelerate_interpolator"
 
         android:toAlpha="0.0" />

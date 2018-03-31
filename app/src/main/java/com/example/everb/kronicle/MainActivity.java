@@ -140,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
     private void animateFab() {
         if (isOpen) {
             fab.startAnimation(rotateBackward);
-
             fabNotes.startAnimation(fabClose);
             fabTimer.startAnimation(fabClose);
             fabHabits.startAnimation(fabClose);
@@ -152,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
             isOpen = false;
         } else {
             fab.startAnimation(rotateForward);
-
             fabNotes.startAnimation(fabOpen);
             fabTimer.startAnimation(fabOpen);
             fabHabits.startAnimation(fabOpen);
