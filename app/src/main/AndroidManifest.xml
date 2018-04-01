@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label=""
+        android:label="@string/kronicle"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -16,7 +16,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,16 +24,16 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme" />
+
         <activity android:name=".SignUp" />
         <activity android:name=".LandingPage" />
         <activity android:name=".MyAccount" />
+        <activity android:name=".Settings" />
+        <activity android:name=".About" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-        <activity android:name=".Settings" />
-        <activity android:name=".About"></activity>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.example.everb.kronicle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -19,13 +20,16 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TabLayout tablayout;
+    NavigationView navigationView;
     private ViewPager viewPager;
     private DrawerLayout mDrawerLayout;
+    // When the back button is pressed the app is closed
+    boolean backButtonPressedTwice = false;
 
     FloatingActionButton fab, fabNotes, fabTimer, fabHabits;
     Animation fabOpen, fabClose, rotateForward, rotateBackward;
     boolean isOpen = false;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Drawer-SideMenu Setup
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
 
         // Will always have the home button selected
         navigationView.getMenu().getItem(0).setChecked(true);
@@ -82,8 +86,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         // Create the tabLayout with fragments
-        tablayout = findViewById(R.id.tablayout_id);
+        tabLayout = findViewById(R.id.tablayout_id);
         viewPager = findViewById(R.id.viewpager_id);
 
         // Build Tab Adapter object, Fragments go here
@@ -92,11 +97,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.AddFragment(new FragmentTimer(), getString(R.string.timer));
         adapter.AddFragment(new FragmentHabits(), getString(R.string.habits));
 
-        // Adapter Setup
+        // Adapter Setup for tabLayout
         viewPager.setAdapter(adapter);
-        tablayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
 
-        // Add Menu
+        // Floating Action Button Menu
         fab = findViewById(R.id.fab);
         fabNotes = findViewById(R.id.fab_notes);
         fabTimer = findViewById(R.id.fab_timer);
@@ -137,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Animation for Fab Menu
+    // Animation for Floating Action Button Menu
     private void animateFab() {
         if (isOpen) {
             fab.startAnimation(rotateBackward);
@@ -161,6 +166,32 @@ public class MainActivity extends AppCompatActivity {
             fabHabits.setClickable(true);
 
             isOpen = true;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backButtonPressedTwice) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Press the back button again to close this application.", Toast.LENGTH_LONG).show();
+
+            backButtonPressedTwice = true;
+            new CountDownTimer(3000, 1000) {
+
+                @Override
+                public void onTick(long l) {
+
+                }
+
+                @Override
+                public void onFinish() {
+                    backButtonPressedTwice = false;
+                }
+            }.start();
         }
     }
 

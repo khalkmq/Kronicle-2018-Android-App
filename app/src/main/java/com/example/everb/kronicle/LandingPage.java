@@ -1,8 +1,8 @@
 package com.example.everb.kronicle;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -52,6 +52,7 @@ public class LandingPage extends AppCompatActivity {
                 loginDataBaseAdapter.insertEntry("Guest", "Guest", "Guest", "Guest");
                 Toast.makeText(getApplicationContext(), "Guest account created, Welcome to Kronicle!", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(LandingPage.this, MainActivity.class));
+                finish();
             }
         });
     }

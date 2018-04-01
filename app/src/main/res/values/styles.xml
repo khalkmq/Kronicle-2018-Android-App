@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/colorBase</item>
         <item name="colorPrimaryDark">@color/colorBase</item>
         <item name="colorAccent">@color/colorHelperOne</item>
-        <item name="titleTextColor">@color/colorLight</item>
+        <item name="titleTextColor">@color/colorBase</item>
     </style>
 
     <!-- Splash Screen Theme -->
