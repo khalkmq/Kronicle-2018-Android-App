@@ -20,11 +20,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    NavigationView navigationView;
+    private NavigationView navigationView;
     private ViewPager viewPager;
     private DrawerLayout mDrawerLayout;
-    // When the back button is pressed the app is closed
-    boolean backButtonPressedTwice = false;
 
     FloatingActionButton fab, fabNotes, fabTimer, fabHabits;
     Animation fabOpen, fabClose, rotateForward, rotateBackward;
@@ -169,6 +167,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Exiting the app requires the back button to be pressed twice
+    boolean backButtonPressedTwice = false;
+
     @Override
     public void onBackPressed() {
         if (backButtonPressedTwice) {
@@ -176,8 +177,10 @@ public class MainActivity extends AppCompatActivity {
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        } else {
-            Toast.makeText(this, "Press the back button again to close this application.", Toast.LENGTH_LONG).show();
+        }
+
+        else {
+            Toast.makeText(this, "Press the back button again to exit out of this application.", Toast.LENGTH_LONG).show();
 
             backButtonPressedTwice = true;
             new CountDownTimer(3000, 1000) {
