@@ -1,13 +1,98 @@
 package com.example.everb.kronicle;
 
+import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 public class About extends AppCompatActivity {
+
+    private DrawerLayout mDrawerLayout;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
+
+        // Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar_ma);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.icon_menu);
+
+        /****************************************************************/
+        /** THIS SEGMENT IS RESPONSIBLE FOR MENU (HAMBURGER) BEHAVIOUR **/
+        // Drawer-SideMenu Setup
+        mDrawerLayout = findViewById(R.id.drawer_layout_ma);
+        navigationView = findViewById(R.id.nav_view_ma);
+
+        // Activity will have its self selected initially:
+        navigationView.getMenu().getItem(3).setChecked(true);
+
+        // This will run activity and highlight item once the other activity is opened
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                // SAME FOR ALL: Set item to Highlight
+                menuItem.setChecked(true);
+                // SAME FOR ALL: Close Side menu once clicked
+                mDrawerLayout.closeDrawers();
+                // SAME FOR ALL: Determines which item was selected
+                int itemId = menuItem.getItemId();
+
+                // If HOME
+                if (itemId == R.id.home_drawer) {
+                    Intent intent_MainActivity = new Intent(About.this, MainActivity.class);
+                    startActivity(intent_MainActivity);
+                }
+                // if MY ACCOUNT
+                if (itemId == R.id.my_account_drawer) {
+                    Intent intent_about = new Intent(About.this, MyAccount.class);
+                    startActivity(intent_about);
+                }
+                // if SETTINGS
+                if (itemId == R.id.settings_drawer) {
+                    Intent intent_settings = new Intent(About.this, Settings.class);
+                    startActivity(intent_settings);
+                }
+                // if ABOUT
+                if (itemId == R.id.about_drawer) {
+                    // Selected Self : Nothing happens
+                    return true;
+                }
+
+                return true;
+            }
+        });
+        /*********************| END OF MENU CHUNK |**********************/
+
+
+    } /** End of on-Create **/
+
+    // Behaviour when app returns to this page
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Re-Adjust the highlighted menu item (THIS OCCURS WHEN USER PRESSES 'Back')
+        navigationView.getMenu().getItem(3).setChecked(true);
+    }
+    
+    // Drawer menu icon behaviour
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

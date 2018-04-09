@@ -25,11 +25,26 @@
             android:name=".MainActivity"
             android:theme="@style/AppTheme" />
 
+        <!-- Children of Main Activity -->
+        <!-- My Account -->
+        <activity
+            android:name=".MyAccount"
+            android:label="@string/my_account"
+            android:parentActivityName=".MainActivity"/>
+        <!-- Settings -->
+        <activity
+            android:name=".Settings"
+            android:label="@string/settings"
+            android:parentActivityName=".MainActivity"/>
+        <!-- About -->
+        <activity
+            android:name=".About"
+            android:label="@string/about"
+            android:parentActivityName=".MainActivity"/>
+
+        <!-- Other Activities -->
         <activity android:name=".SignUp" />
         <activity android:name=".LandingPage" />
-        <activity android:name=".MyAccount" />
-        <activity android:name=".Settings" />
-        <activity android:name=".About" />
 
         <meta-data
             android:name="preloaded_fonts"

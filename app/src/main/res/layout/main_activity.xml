@@ -28,7 +28,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/k_simple" />
+                android:src="@drawable/k" />
 
         </android.support.v7.widget.Toolbar>
 

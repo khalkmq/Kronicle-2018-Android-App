@@ -41,40 +41,43 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.icon_menu);
 
+        /****************************************************************/
+        /** THIS SEGMENT IS RESPONSIBLE FOR MENU (HAMBURGER) BEHAVIOUR **/
         // Drawer-SideMenu Setup
         mDrawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        // Will always have the home button selected
+        // Activity will have its self selected initially:
         navigationView.getMenu().getItem(0).setChecked(true);
 
+        // This will change the highlight once the other activity is opened
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-                // Set item to Highlight
-                menuItem.setChecked(true);
+                    // SAME FOR ALL: Set item to Highlight
+                    menuItem.setChecked(true);
+                    // SAME FOR ALL: Close Side menu once clicked
+                    mDrawerLayout.closeDrawers();
+                    // SAME FOR ALL: Determines which item was selected
+                    int itemId = menuItem.getItemId();
 
-                // Close Side menu once clicked
-                mDrawerLayout.closeDrawers();
-
-                // Determines which item was selected
-                int itemId = menuItem.getItemId();
-
+                // If HOME
                 if (itemId == R.id.home_drawer) {
+                    // Selected Self : Nothing happens
                     return true;
                 }
-
+                // if MY ACCOUNT
                 if (itemId == R.id.my_account_drawer) {
                     Intent intent_my_account = new Intent(MainActivity.this, MyAccount.class);
                     startActivity(intent_my_account);
                 }
-
+                // if SETTINGS
                 if (itemId == R.id.settings_drawer) {
                     Intent intent_settings = new Intent(MainActivity.this, Settings.class);
                     startActivity(intent_settings);
                 }
-
+                // if ABOUT
                 if (itemId == R.id.about_drawer) {
                     Intent intent_about = new Intent(MainActivity.this, About.class);
                     startActivity(intent_about);
@@ -82,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             }
+
         });
+        /*********************| END OF MENU CHUNK |**********************/
 
 
         // Create the tabLayout with fragments
@@ -138,6 +143,27 @@ public class MainActivity extends AppCompatActivity {
                 animateFab();
             }
         });
+    }
+    /** END OF ONCREATE **/
+
+
+    // Behaviour when app returns to this page
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Re-Adjust the highlighted menu item (THIS OCCURS WHEN USER PRESSES 'Back')
+        navigationView.getMenu().getItem(0).setChecked(true);
+    }
+
+    // Drawer menu icon behaviour
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // Animation for Floating Action Button Menu
@@ -198,14 +224,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Drawer menu icon behaviour
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-            mDrawerLayout.openDrawer(GravityCompat.START);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 }
