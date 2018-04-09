@@ -2,6 +2,7 @@ package com.example.everb.kronicle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -41,17 +42,21 @@ public class MyAccount extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-                    // SAME FOR ALL: Set item to Highlight
-                    menuItem.setChecked(true);
-                    // SAME FOR ALL: Close Side menu once clicked
-                    mDrawerLayout.closeDrawers();
-                    // SAME FOR ALL: Determines which item was selected
-                    int itemId = menuItem.getItemId();
+                // SAME FOR ALL: Set item to Highlight
+                menuItem.setChecked(true);
+                // SAME FOR ALL: Close Side menu once clicked
+                mDrawerLayout.closeDrawers();
+                // SAME FOR ALL: Determines which item was selected
+                int itemId = menuItem.getItemId();
 
                 // If HOME
                 if (itemId == R.id.home_drawer) {
-                    Intent intent_MainActivity = new Intent(MyAccount.this, MainActivity.class);
-                    startActivity(intent_MainActivity);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            finish();
+                        }
+                    }, 300);
                 }
                 // if MY ACCOUNT
                 if (itemId == R.id.my_account_drawer) {
@@ -62,11 +67,13 @@ public class MyAccount extends AppCompatActivity {
                 if (itemId == R.id.settings_drawer) {
                     Intent intent_settings = new Intent(MyAccount.this, Settings.class);
                     startActivity(intent_settings);
+                    finish();
                 }
                 // if ABOUT
                 if (itemId == R.id.about_drawer) {
                     Intent intent_about = new Intent(MyAccount.this, About.class);
                     startActivity(intent_about);
+                    finish();
                 }
 
                 return true;
@@ -75,7 +82,11 @@ public class MyAccount extends AppCompatActivity {
         /*********************| END OF MENU CHUNK |**********************/
 
 
-    } /** End of on-Create **/
+    }
+
+    /**
+     * End of on-Create
+     **/
 
     // Behaviour when app returns to this page
     @Override
@@ -94,5 +105,17 @@ public class MyAccount extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // Closes drawer when back button is pressed
+    @Override
+    public void onBackPressed() {
+        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            this.mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+
+        else {
+        super.onBackPressed();
+        }
     }
 }

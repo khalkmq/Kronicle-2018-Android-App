@@ -1,6 +1,7 @@
 package com.example.everb.kronicle;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -50,13 +51,18 @@ public class Settings extends AppCompatActivity {
 
                 // If HOME
                 if (itemId == R.id.home_drawer) {
-                    Intent intent_MainActivity = new Intent(Settings.this, MainActivity.class);
-                    startActivity(intent_MainActivity);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            finish();
+                        }
+                    }, 300);
                 }
                 // if MY ACCOUNT
                 if (itemId == R.id.my_account_drawer) {
                     Intent intent_settings = new Intent(Settings.this, MyAccount.class);
                     startActivity(intent_settings);
+                    finish();
                 }
                 // if SETTINGS
                 if (itemId == R.id.settings_drawer) {
@@ -67,6 +73,7 @@ public class Settings extends AppCompatActivity {
                 if (itemId == R.id.about_drawer) {
                     Intent intent_about = new Intent(Settings.this, About.class);
                     startActivity(intent_about);
+                    finish();
                 }
 
                 return true;
@@ -94,5 +101,17 @@ public class Settings extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // Closes drawer when back button is pressed
+    @Override
+    public void onBackPressed() {
+        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            this.mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+
+        else {
+            super.onBackPressed();
+        }
     }
 }

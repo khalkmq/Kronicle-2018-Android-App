@@ -196,33 +196,39 @@ public class MainActivity extends AppCompatActivity {
     // Exiting the app requires the back button to be pressed twice
     boolean backButtonPressedTwice = false;
 
+    // Closes drawer when back button is pressed
     @Override
     public void onBackPressed() {
-        if (backButtonPressedTwice) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            this.mDrawerLayout.closeDrawer(GravityCompat.START);
         }
 
         else {
-            Toast.makeText(this, "Press the back button again to exit out of this application.", Toast.LENGTH_LONG).show();
 
-            backButtonPressedTwice = true;
-            new CountDownTimer(3000, 1000) {
+            if (backButtonPressedTwice) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
 
-                @Override
-                public void onTick(long l) {
+            else {
+                Toast.makeText(this, "Press the back button again to exit out of this application.", Toast.LENGTH_LONG).show();
 
-                }
+                backButtonPressedTwice = true;
+                new CountDownTimer(3000, 1000) {
 
-                @Override
-                public void onFinish() {
-                    backButtonPressedTwice = false;
-                }
-            }.start();
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        backButtonPressedTwice = false;
+                    }
+                }.start();
+            }
         }
     }
-
-
 }

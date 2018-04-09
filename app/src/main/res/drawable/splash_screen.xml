@@ -3,11 +3,11 @@
 <!-- MODIFY THIS TO CHANGE OUR SPLASH SCREEN -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/pattern_background"/>
+    <item android:drawable="@color/colorBase"/>
 
     <item
-        android:drawable="@drawable/k_simple"
-        android:height="150dp"
-        android:width="150dp"
+        android:drawable="@drawable/k"
+        android:height="100dp"
+        android:width="100dp"
         android:gravity="center"/>
 </layer-list>
