@@ -103,7 +103,7 @@ public class About extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Closes drawer when back button is pressed
+    // Closes drawer when back button is pressed, else it returns to main activity
     @Override
     public void onBackPressed() {
         if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
