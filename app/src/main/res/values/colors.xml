@@ -5,10 +5,5 @@
     <color name="colorComplement">#00e6bc</color>
 
     <color name="colorLight">#FFFFFF</color>
-    <color name="colorDark">#F5F6FB</color>
-
-    <color name="colorHelperOne">#ED4265</color>
-    <color name="colorHelperTwo">#683269</color>
-    <color name="colorHelperThree">#FEBE37</color>
 
 </resources>

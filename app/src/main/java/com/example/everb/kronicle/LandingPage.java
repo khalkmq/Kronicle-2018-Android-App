@@ -64,7 +64,7 @@ public class LandingPage extends AppCompatActivity {
             long newRowId =  theDB.insert("offlineUsers", null, values);
 
             // Welcome the user!
-            Toast.makeText(getApplicationContext(), "Account Created, Welcome Guest!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.guest), Toast.LENGTH_LONG).show();
 
             // Go to the Main Page
             startActivity(new Intent(this, MainActivity.class));

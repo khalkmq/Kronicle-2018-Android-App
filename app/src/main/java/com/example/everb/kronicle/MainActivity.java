@@ -103,46 +103,6 @@ public class MainActivity extends AppCompatActivity {
         // Adapter Setup for tabLayout
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-
-        // Floating Action Button Menu
-        fab = findViewById(R.id.fab);
-        fabNotes = findViewById(R.id.fab_notes);
-        fabTimer = findViewById(R.id.fab_timer);
-        fabHabits = findViewById(R.id.fab_habits);
-
-        fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open);
-        fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close);
-
-        rotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward);
-        rotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animateFab();
-            }
-        });
-
-        fabNotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "hello", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        fabTimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animateFab();
-            }
-        });
-
-        fabHabits.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animateFab();
-            }
-        });
     }
     /** END OF ONCREATE **/
 
@@ -166,33 +126,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Animation for Floating Action Button Menu
-    private void animateFab() {
-        if (isOpen) {
-            fab.startAnimation(rotateBackward);
-            fabNotes.startAnimation(fabClose);
-            fabTimer.startAnimation(fabClose);
-            fabHabits.startAnimation(fabClose);
-
-            fabNotes.setClickable(false);
-            fabTimer.setClickable(false);
-            fabHabits.setClickable(false);
-
-            isOpen = false;
-        } else {
-            fab.startAnimation(rotateForward);
-            fabNotes.startAnimation(fabOpen);
-            fabTimer.startAnimation(fabOpen);
-            fabHabits.startAnimation(fabOpen);
-
-            fabNotes.setClickable(true);
-            fabTimer.setClickable(true);
-            fabHabits.setClickable(true);
-
-            isOpen = true;
-        }
-    }
-
     // Exiting the app requires the back button to be pressed twice
     boolean backButtonPressedTwice = false;
 
@@ -213,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             else {
-                Toast.makeText(this, "Press the back button again to exit out of this application.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.exit), Toast.LENGTH_LONG).show();
 
                 backButtonPressedTwice = true;
                 new CountDownTimer(3000, 1000) {

@@ -23,13 +23,6 @@
             android:background="@color/colorBase"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
-            <ImageView
-                android:id="@+id/logo_ma"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/k" />
-
         </android.support.v7.widget.Toolbar>
 
         <TextView

@@ -15,6 +15,7 @@
         android:layout_height="200dp"
         android:layout_marginBottom="128dp"
         android:layout_marginTop="64dp"
+        android:contentDescription="@string/kronicle"
         app:layout_constraintBottom_toTopOf="@+id/sign_in_button_ip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,10 +27,11 @@
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginBottom="2dp"
-        android:elevation="10dp"
         android:background="@drawable/button_shape"
+        android:elevation="10dp"
+        android:fontFamily="sans-serif"
         android:foreground="@drawable/ripple_effect"
-        android:fontFamily="@font/lato"
+        android:onClick="btnSignInClick"
         android:text="@string/sign_in"
         android:textAlignment="center"
         android:textColor="@color/colorBase"
@@ -40,8 +42,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_ip"
-        tools:text="@string/sign_in"
-        android:onClick="btnSignInClick"/>
+        tools:text="@string/sign_in" />
 
     <Button
         android:id="@+id/sign_up_button_ip"
@@ -50,17 +51,17 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/button_shape"
         android:elevation="10dp"
-        android:fontFamily="@font/lato"
+        android:fontFamily="sans-serif"
         android:foreground="@drawable/ripple_effect"
+        android:onClick="btnSignUpClick"
         android:text="@string/sign_up"
-        android:textColor="@color/colorComplement"
+        android:textColor="@color/colorBase"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guest_sign_in_button_ip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_button_ip"
-        android:onClick="btnSignUpClick"/>
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button_ip" />
 
     <Button
         android:id="@+id/guest_sign_in_button_ip"
@@ -68,16 +69,16 @@
         android:layout_height="40dp"
         android:layout_marginBottom="2dp"
         android:background="@android:color/transparent"
-        android:fontFamily="@font/lato"
+        android:fontFamily="sans-serif"
+        android:onClick="btnGuestClick"
         android:text="@string/continue_guest"
         android:textAllCaps="false"
-        android:textColor="@color/colorHelperOne"
+        android:textColor="@color/colorComplement"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_button_ip"
-        android:onClick="btnGuestClick" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_button_ip" />
 
 </android.support.constraint.ConstraintLayout>
