@@ -40,7 +40,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_ip"
-        tools:text="@string/sign_in" />
+        tools:text="@string/sign_in"
+        android:onClick="btnSignInClick"/>
 
     <Button
         android:id="@+id/sign_up_button_ip"
@@ -58,7 +59,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_button_ip" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button_ip"
+        android:onClick="btnSignUpClick"/>
 
     <Button
         android:id="@+id/guest_sign_in_button_ip"
@@ -75,6 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_button_ip" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_button_ip"
+        android:onClick="btnGuestClick" />
 
 </android.support.constraint.ConstraintLayout>

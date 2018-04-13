@@ -1,6 +1,8 @@
 package com.example.everb.kronicle;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -10,11 +12,18 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MyAccount extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     NavigationView navigationView;
+
+    //Data base stuff
+    SQLiteDatabase theDB;
+    long currentRow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +91,32 @@ public class MyAccount extends AppCompatActivity {
         /*********************| END OF MENU CHUNK |**********************/
 
 
+
+    }/**End of on-Create**/
+
+
+    /** Refresh button behaviour **/
+    public void btnRefreshClick(View view) {
+        StringBuffer sb = new StringBuffer();
+      //  String[] columns = {"_id", "username", "password", "email", "birthdate"};
+        String[] columns = {"_id"};
+
+        Cursor c = theDB.query("users2", columns, null, null, null, null, "_id");
+
+        Toast.makeText(getApplicationContext(), "THIS PART WORKS", Toast.LENGTH_LONG).show();
+
+        while (c.moveToNext()) {
+            sb.append("id: " + c.getLong(c.getColumnIndexOrThrow("_id")) + "\n");
+//            sb.append(c.getString(c.getColumnIndexOrThrow("username")) + "\n");
+//            sb.append(c.getString(c.getColumnIndexOrThrow("password")) + "\n");
+//            sb.append(c.getString(c.getColumnIndexOrThrow("email")) + "\n");
+//            sb.append(c.getString(c.getColumnIndexOrThrow("birthdate")) + "\n");
+//            sb.append("---------------------------------------------------------------\n");
+        }
+       ((TextView) findViewById(R.id.lblResults)).setText(sb);
+        c.close();
     }
 
-    /**
-     * End of on-Create
-     **/
 
     // Behaviour when app returns to this page
     @Override
@@ -94,6 +124,14 @@ public class MyAccount extends AppCompatActivity {
         super.onResume();
         // Re-Adjust the highlighted menu item (THIS OCCURS WHEN USER PRESSES 'Back')
         navigationView.getMenu().getItem(1).setChecked(true);
+
+        // Get a writable database
+        UserDatabase.getInstance(this).getWritableDatabase(new UserDatabase.OnDBReadyListener() {
+            @Override
+            public void onDBReady(SQLiteDatabase db) {
+                theDB = db;
+            }
+        });
     }
 
     // Drawer menu icon behaviour
@@ -117,5 +155,12 @@ public class MyAccount extends AppCompatActivity {
         else {
         super.onBackPressed();
         }
+    }
+
+    // When paused close db
+    @Override
+    public void onPause() {
+        super.onPause();
+        theDB.close();
     }
 }

@@ -1,6 +1,8 @@
 package com.example.everb.kronicle;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,75 +12,90 @@ import android.widget.Toast;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText nameText;
-    EditText lastNameText;
+    // Variables for input
+    EditText usernameText;
     EditText emailText;
+    EditText birthDateText;
     EditText passwordText;
     EditText passwordConfirmText;
-    Button signUpButton;
 
-    LoginDataBaseAdapter loginDataBaseAdapter;
+    // Database files
+    SQLiteDatabase theDB;
 
+    /** On Create **/
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
+    }
 
-        // Instance of SQLite Database
-        loginDataBaseAdapter = new LoginDataBaseAdapter(this);
-        loginDataBaseAdapter = loginDataBaseAdapter.open();
-
-        // Reference the objects on the sign up page
-        nameText = findViewById (R.id.name_text_su);
-        lastNameText = findViewById (R.id.last_name_text_su);
-        emailText = findViewById (R.id.email_text_su);
-        passwordText = findViewById(R.id.password_text_su);
-        passwordConfirmText = findViewById(R.id.password_comfirm_text_su);
-        signUpButton = findViewById(R.id.sign_up_button_su);
-
-        // OnClick Listener for sign up button
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                // Get the user's input and save it on strings
-                String name = nameText.getText().toString();
-                String lastName = lastNameText.getText().toString();
-                String email = emailText.getText().toString();
-                String password = passwordText.getText().toString();
-                String passwordConfirm = passwordConfirmText.getText().toString();
-
-                // Check if any EditText boxes is empty
-                if(name.equals("") || lastName.equals("") || email.equals("") || password.equals("") || passwordConfirm.equals(""))
-                {
-                    Toast.makeText(getApplicationContext(), "Field left empty", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                // Check if the password and password confirmation match
-                else if(!password.equals(passwordConfirm))
-                {
-                    Toast.makeText(getApplicationContext(), "The passwords do not match", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                // If the requirements are met the account will be created, and page with redirect to main page.
-                else
-                {
-                    // The user's information will be saved in the Database
-                    loginDataBaseAdapter.insertEntry(name, lastName, email, password);
-                    Toast.makeText(getApplicationContext(), "Account Created, Welcome to Kronicle!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(SignUp.this, MainActivity.class));
-                }
+    /** On Resume **/
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Get a writable database
+        UserDatabase.getInstance(this).getWritableDatabase(new UserDatabase.OnDBReadyListener() {
+            @Override
+            public void onDBReady(SQLiteDatabase db) {
+                theDB = db;
             }
         });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    /** When the sign up button is clicked **/
+    public void btnSignUpClick(View view) {
 
-        loginDataBaseAdapter.close();
+        // Reference the objects on the sign up page
+        usernameText = findViewById (R.id.name_text_su);
+        birthDateText = findViewById (R.id.birth_date_su);
+        emailText = findViewById (R.id.email_text_su);
+        passwordText = findViewById(R.id.password_text_su);
+        passwordConfirmText = findViewById(R.id.password_comfirm_text_su);
+
+        // Get the user's input and save it on strings
+        String username = usernameText.getText().toString();
+        String birthdate = birthDateText.getText().toString();
+        String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
+        String passwordConfirm = passwordConfirmText.getText().toString();
+
+        // Check if any EditText boxes is empty
+        if(username.equals("")){Toast.makeText(getApplicationContext(), "Username can not be empty", Toast.LENGTH_LONG).show();return;}
+        else if(birthdate.equals("")){Toast.makeText(getApplicationContext(), "Birth Date can not be empty", Toast.LENGTH_LONG).show();return;}
+        else if(email.equals("")){Toast.makeText(getApplicationContext(), "Email can not be empty", Toast.LENGTH_LONG).show();return;}
+        else if(password.equals("")){Toast.makeText(getApplicationContext(), "Password field can not be empty", Toast.LENGTH_LONG).show();return;}
+        else if(passwordConfirm.equals("")){Toast.makeText(getApplicationContext(), "Please confirm your password", Toast.LENGTH_LONG).show();return;}
+
+        // Check if the password and password confirmation match
+        else if(!password.equals(passwordConfirm)) {Toast.makeText(getApplicationContext(), "The passwords do not match", Toast.LENGTH_LONG).show();return;}
+
+        /**    ----- INSERT CODE TO KEEP ACCOUNTS UNIQUE HERE -----    **/
+
+        // If the requirements are met the account will be created, and page with redirect to main page.
+        else
+        {
+            // The user's information will be saved in the Database
+            ContentValues values = new ContentValues();
+            values.put("username", username);
+            values.put("password", password);
+            values.put("email", email);
+            values.put("birthdate", birthdate);
+            long newRowId = theDB.insert("users2", null, values);
+
+            // Welcome the user!
+            Toast.makeText(getApplicationContext(), "Account Created, Welcome " + username +"!", Toast.LENGTH_LONG).show();
+
+            // Go to the Main Page
+            startActivity(new Intent(SignUp.this, MainActivity.class));
+        }
     }
+
+    /** When activity is paused **/
+    @Override
+    protected void onPause() {
+        super.onPause();
+        theDB.close();
+    }
+
+
 }
