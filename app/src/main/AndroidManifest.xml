@@ -16,6 +16,7 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,22 +31,22 @@
         <activity
             android:name=".MyAccount"
             android:label="@string/my_account"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <!-- Settings -->
         <activity
             android:name=".Settings"
             android:label="@string/settings"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <!-- About -->
         <activity
             android:name=".About"
             android:label="@string/about"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
 
         <!-- Other Activities -->
         <activity android:name=".SignUp" />
         <activity android:name=".LandingPage" />
-
+        <activity android:name=".SignIn"></activity>
     </application>
 
 </manifest>

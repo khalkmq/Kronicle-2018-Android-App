@@ -5,5 +5,6 @@
     <color name="colorComplement">#00e6bc</color>
 
     <color name="colorLight">#FFFFFF</color>
+    <color name="colorDark">#F5F6FB</color>
 
 </resources>

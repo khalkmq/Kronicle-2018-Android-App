@@ -23,10 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private ViewPager viewPager;
     private DrawerLayout mDrawerLayout;
-
-    FloatingActionButton fab, fabNotes, fabTimer, fabHabits;
-    Animation fabOpen, fabClose, rotateForward, rotateBackward;
-    boolean isOpen = false;
     private TabLayout tabLayout;
 
     @Override
