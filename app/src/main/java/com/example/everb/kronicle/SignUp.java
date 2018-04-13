@@ -34,7 +34,7 @@ public class SignUp extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // Get a writable database
-        UserDatabase.getInstance(this).getWritableDatabase(new UserDatabase.OnDBReadyListener() {
+        UserDatabase.getInstance(this).asyncWritableDatabase(new UserDatabase.OnDBReadyListener() {
             @Override
             public void onDBReady(SQLiteDatabase db) {
                 theDB = db;
@@ -80,7 +80,7 @@ public class SignUp extends AppCompatActivity {
             values.put("password", password);
             values.put("email", email);
             values.put("birthdate", birthdate);
-            long newRowId = theDB.insert("users2", null, values);
+            long newRowId = theDB.insert("offlineUsers", null, values);
 
             // Welcome the user!
             Toast.makeText(getApplicationContext(), "Account Created, Welcome " + username +"!", Toast.LENGTH_LONG).show();
@@ -96,6 +96,4 @@ public class SignUp extends AppCompatActivity {
         super.onPause();
         theDB.close();
     }
-
-
 }

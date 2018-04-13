@@ -98,20 +98,19 @@ public class MyAccount extends AppCompatActivity {
     /** Refresh button behaviour **/
     public void btnRefreshClick(View view) {
         StringBuffer sb = new StringBuffer();
-      //  String[] columns = {"_id", "username", "password", "email", "birthdate"};
-        String[] columns = {"_id"};
+        String[] columns = {"_id", "username", "password", "email", "birthdate"};
 
-        Cursor c = theDB.query("users2", columns, null, null, null, null, "_id");
+        Cursor c = theDB.query("offlineUsers", columns, null, null, null, null, "_id");
 
         Toast.makeText(getApplicationContext(), "THIS PART WORKS", Toast.LENGTH_LONG).show();
 
         while (c.moveToNext()) {
             sb.append("id: " + c.getLong(c.getColumnIndexOrThrow("_id")) + "\n");
-//            sb.append(c.getString(c.getColumnIndexOrThrow("username")) + "\n");
-//            sb.append(c.getString(c.getColumnIndexOrThrow("password")) + "\n");
-//            sb.append(c.getString(c.getColumnIndexOrThrow("email")) + "\n");
-//            sb.append(c.getString(c.getColumnIndexOrThrow("birthdate")) + "\n");
-//            sb.append("---------------------------------------------------------------\n");
+            sb.append(c.getString(c.getColumnIndexOrThrow("username")) + "\n");
+            sb.append(c.getString(c.getColumnIndexOrThrow("password")) + "\n");
+            sb.append(c.getString(c.getColumnIndexOrThrow("email")) + "\n");
+            sb.append(c.getString(c.getColumnIndexOrThrow("birthdate")) + "\n");
+            sb.append("---------------------------------------------------------------\n");
         }
        ((TextView) findViewById(R.id.lblResults)).setText(sb);
         c.close();
@@ -126,7 +125,7 @@ public class MyAccount extends AppCompatActivity {
         navigationView.getMenu().getItem(1).setChecked(true);
 
         // Get a writable database
-        UserDatabase.getInstance(this).getWritableDatabase(new UserDatabase.OnDBReadyListener() {
+        UserDatabase.getInstance(this).asyncWritableDatabase(new UserDatabase.OnDBReadyListener() {
             @Override
             public void onDBReady(SQLiteDatabase db) {
                 theDB = db;

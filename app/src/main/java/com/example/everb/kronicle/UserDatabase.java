@@ -1,5 +1,6 @@
 package com.example.everb.kronicle;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -13,15 +14,17 @@ public class UserDatabase extends SQLiteOpenHelper {
     }
 
     // Database Name
-    public static final String DATABASE_NAME = "userInfo.db";
+    private static final String DATABASE_NAME = "userInfo.db";
     // Database Version
-    public static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     // Make a single instance of the database
     private static UserDatabase userDatabase;
+    // Make Context instance
+    private Context appContext;
 
     // Private function to add entries
     private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE users2 (" +
+            "CREATE TABLE offlineUsers (" +
                     "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "username TEXT, " +
                     "password TEXT, " +
@@ -30,17 +33,18 @@ public class UserDatabase extends SQLiteOpenHelper {
 
     // Private function to delete entries
     private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS users2";
+            "DROP TABLE IF EXISTS offlineUsers";
 
     // Constructor
-    UserDatabase(Context context) {
-        super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
+    private UserDatabase(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        appContext = context.getApplicationContext();
     }
 
     // Public call to retrieve or create the database.
     public static synchronized UserDatabase getInstance(Context context) {
         if (userDatabase == null) {
-            userDatabase = new UserDatabase(context);
+            userDatabase = new UserDatabase(context.getApplicationContext());
         }
         return userDatabase;
     }
@@ -49,6 +53,7 @@ public class UserDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
+        // We can pre-populate this if needed - look at Joke Project 2
     }
 
     /** onUpgrade **/
@@ -64,6 +69,10 @@ public class UserDatabase extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
+    /** ASync Writeable database **/
+    public void asyncWritableDatabase(OnDBReadyListener listener) {
+        new OpenDbAsyncTask().execute(listener);
+    }
 
     /** ASync class **/
     private static class OpenDbAsyncTask extends AsyncTask<OnDBReadyListener,Void,SQLiteDatabase> {
@@ -77,14 +86,7 @@ public class UserDatabase extends SQLiteOpenHelper {
 
         @Override
         protected void onPostExecute(SQLiteDatabase db) {
-            //Make that callback
             listener.onDBReady(db);
         }
     }
-
-    //
-    public void getWritableDatabase(OnDBReadyListener listener) {
-        new OpenDbAsyncTask().execute(listener);
-    }
-
 }
