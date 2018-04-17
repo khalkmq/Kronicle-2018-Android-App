@@ -8,7 +8,8 @@
         android:label="@string/kronicle"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="true">
 
         <!-- Splash Screen -->
         <activity
@@ -20,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Other Activities -->
+        <activity android:name=".LandingPage"
+            android:theme="@style/AppTheme" />
 
         <!-- Main Activity -->
         <activity
@@ -43,10 +48,6 @@
             android:label="@string/about"
             android:parentActivityName=".MainActivity" />
 
-        <!-- Other Activities -->
-        <activity android:name=".SignUp" />
-        <activity android:name=".LandingPage" />
-        <activity android:name=".SignIn"></activity>
     </application>
 
 </manifest>

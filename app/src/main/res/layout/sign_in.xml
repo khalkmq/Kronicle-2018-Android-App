@@ -4,6 +4,212 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignIn">
+    tools:context=".SignIn"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/icon_username_si"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/username"
+        android:src="@drawable/icon_log_in"
+        app:layout_constraintBottom_toBottomOf="@+id/username_si"
+        app:layout_constraintEnd_toStartOf="@+id/username_si"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/username_si" />
+
+    <EditText
+        android:id="@+id/username_si"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorBase"
+        app:layout_constraintBottom_toTopOf="@+id/password_si"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/icon_username_si"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon_password_si"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/password"
+        android:src="@drawable/icon_password"
+        app:layout_constraintBottom_toBottomOf="@+id/password_si"
+        app:layout_constraintEnd_toStartOf="@+id/password_si"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/password_si" />
+
+    <EditText
+        android:id="@+id/password_si"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textColor="@color/colorBase"
+        app:layout_constraintBottom_toTopOf="@+id/sign_in_button_si"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/icon_password_si"
+        app:layout_constraintTop_toBottomOf="@+id/username_si" />
+
+    <Button
+        android:id="@+id/sign_in_button_si"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:width="300dp"
+        android:height="50dp"
+        android:background="@color/colorBase"
+        android:text="@string/sign_in"
+        android:textColor="@android:color/background_light"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/forgot_password_button_si"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_si" />
+
+    <Button
+        android:id="@+id/forgot_password_button_si"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:text="@string/forgot_password"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBase"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/or_text_si"
+        app:layout_constraintEnd_toStartOf="@+id/guest_sign_in_button_si"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button_si" />
+
+    <Button
+        android:id="@+id/guest_sign_in_button_si"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:text="@string/guest"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBase"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/forgot_password_button_si"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/forgot_password_button_si"
+        app:layout_constraintTop_toTopOf="@+id/forgot_password_button_si"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/bar_left_si"
+        style="@style/Divider"
+        android:layout_width="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/or_text_si"
+        app:layout_constraintEnd_toStartOf="@+id/or_text_si"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/or_text_si"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/or_text_si"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/or"
+        app:layout_constraintBottom_toTopOf="@+id/facebook_button_si"
+        app:layout_constraintEnd_toStartOf="@+id/bar_right_si"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bar_left_si"
+        app:layout_constraintTop_toBottomOf="@+id/forgot_password_button_si" />
+
+    <View
+        android:id="@+id/bar_right_si"
+        style="@style/Divider"
+        android:layout_width="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/or_text_si"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/or_text_si"
+        app:layout_constraintTop_toTopOf="@+id/or_text_si"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/facebook_button_si"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        android:background="@color/colorComplement"
+        android:drawableStart="@drawable/icon_facebook"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="@string/facebook"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/google_button_si"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/or_text_si" />
+
+    <Button
+        android:id="@+id/google_button_si"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorComplement"
+        android:drawableStart="@drawable/icon_google"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="@string/google"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/facebook_button_si"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/facebook_button_si"
+        app:layout_constraintTop_toTopOf="@+id/facebook_button_si"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </android.support.constraint.ConstraintLayout>

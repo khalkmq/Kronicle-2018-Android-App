@@ -3,18 +3,27 @@ package com.example.everb.kronicle;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SignUp extends AppCompatActivity {
+
+public class SignUp extends Fragment {
+    View view;
+
+    public SignUp() {
+
+    }
 
     // Variables for input
-    EditText usernameText;
     EditText emailText;
+    EditText fullNameText;
+    EditText usernameText;
     EditText birthDateText;
     EditText passwordText;
     EditText passwordConfirmText;
@@ -22,19 +31,20 @@ public class SignUp extends AppCompatActivity {
     // Database files
     SQLiteDatabase theDB;
 
-    /** On Create **/
+    // onCreate Function
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.sign_up, container, false);
+        return view;
     }
 
     /** On Resume **/
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         // Get a writable database
-        UserDatabase.getInstance(this).asyncWritableDatabase(new UserDatabase.OnDBReadyListener() {
+        UserDatabase.getInstance(getActivity().getApplicationContext()).asyncWritableDatabase(new UserDatabase.OnDBReadyListener() {
             @Override
             public void onDBReady(SQLiteDatabase db) {
                 theDB = db;
@@ -46,32 +56,50 @@ public class SignUp extends AppCompatActivity {
     public void btnSignUpClick(View view) {
 
         // Reference the objects on the sign up page
-        usernameText = findViewById (R.id.name_text_su);
-        birthDateText = findViewById (R.id.birth_date_su);
-        emailText = findViewById (R.id.email_text_su);
-        passwordText = findViewById(R.id.password_text_su);
-        passwordConfirmText = findViewById(R.id.password_comfirm_text_su);
+        emailText = view.findViewById (R.id.email_su);
+        fullNameText = view.findViewById (R.id.full_name_su);
+        usernameText = view.findViewById (R.id.username_su);
+//      birthDateText = view.findViewById (R.id.birth_date_su);
+        passwordText = view.findViewById(R.id.password_su);
+        passwordConfirmText = view.findViewById(R.id.confirm_password_su);
 
         // Get the user's input and save it on strings
-        String username = usernameText.getText().toString();
-        String birthdate = birthDateText.getText().toString();
         String email = emailText.getText().toString();
+        String fullName = fullNameText.getText().toString();
+        String username = usernameText.getText().toString();
+//      String birthdate = birthDateText.getText().toString();
         String password = passwordText.getText().toString();
         String passwordConfirm = passwordConfirmText.getText().toString();
 
         // Check if any EditText boxes is empty
-        if(username.equals("")){Toast.makeText(getApplicationContext(), "Username can not be empty", Toast.LENGTH_LONG).show();return;}
-        else if(birthdate.equals("")){Toast.makeText(getApplicationContext(), "Birth Date can not be empty", Toast.LENGTH_LONG).show();return;}
-        else if(email.equals("")){Toast.makeText(getApplicationContext(), "Email can not be empty", Toast.LENGTH_LONG).show();return;}
-        else if(password.equals("")){Toast.makeText(getApplicationContext(), "Password field can not be empty", Toast.LENGTH_LONG).show();return;}
-        else if(passwordConfirm.equals("")){Toast.makeText(getApplicationContext(), "Please confirm your password", Toast.LENGTH_LONG).show();return;}
+        if(username.equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "Username can not be empty", Toast.LENGTH_LONG).show();
+        }
+
+//        else if(birthdate.equals("")) {
+//            Toast.makeText(getActivity().getApplicationContext(), "Birth Date can not be empty", Toast.LENGTH_LONG).show();
+//        }
+
+        else if(email.equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "Email can not be empty", Toast.LENGTH_LONG).show();
+        }
+
+        else if(password.equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "Password field can not be empty", Toast.LENGTH_LONG).show();
+        }
+
+        else if(passwordConfirm.equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please confirm your password", Toast.LENGTH_LONG).show();
+        }
 
         // Check if the password and password confirmation match
-        else if(!password.equals(passwordConfirm)) {Toast.makeText(getApplicationContext(), "The passwords do not match", Toast.LENGTH_LONG).show();return;}
+        else if(!password.equals(passwordConfirm)) {Toast.makeText(getActivity().getApplicationContext(), "The passwords do not match", Toast.LENGTH_LONG).show();
+        }
 
         /**    ----- INSERT CODE TO KEEP ACCOUNTS UNIQUE HERE -----    **/
 
         // If the requirements are met the account will be created, and page with redirect to main page.
+
         else
         {
             // The user's information will be saved in the Database
@@ -79,20 +107,22 @@ public class SignUp extends AppCompatActivity {
             values.put("username", username);
             values.put("password", password);
             values.put("email", email);
-            values.put("birthdate", birthdate);
+
+            // EDIT
+            values.put("birthdate", "03/21/1995");
             long newRowId = theDB.insert("offlineUsers", null, values);
 
             // Welcome the user!
-            Toast.makeText(getApplicationContext(), "Account Created, Welcome " + username +"!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity().getApplicationContext(), "Account Created, Welcome " + username +"!", Toast.LENGTH_LONG).show();
 
             // Go to the Main Page
-            startActivity(new Intent(SignUp.this, MainActivity.class));
+            startActivity(new Intent(getActivity(), MainActivity.class));
         }
     }
 
     /** When activity is paused **/
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         theDB.close();
     }

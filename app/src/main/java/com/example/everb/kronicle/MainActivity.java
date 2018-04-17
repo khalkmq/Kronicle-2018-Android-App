@@ -3,7 +3,6 @@ package com.example.everb.kronicle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +12,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -142,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             else {
-                Toast.makeText(this, getString(R.string.exit), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.exit_toast), Toast.LENGTH_LONG).show();
 
                 backButtonPressedTwice = true;
                 new CountDownTimer(3000, 1000) {
