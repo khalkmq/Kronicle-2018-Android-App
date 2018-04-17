@@ -46,7 +46,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/password"
-        android:src="@drawable/icon_password"
+        android:src="@drawable/icon_password_key"
         app:layout_constraintBottom_toBottomOf="@+id/password_si"
         app:layout_constraintEnd_toStartOf="@+id/password_si"
         app:layout_constraintHorizontal_bias="0.5"
