@@ -2,9 +2,12 @@ package com.example.everb.kronicle;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class UserDatabase extends SQLiteOpenHelper {
 
@@ -26,6 +29,7 @@ public class UserDatabase extends SQLiteOpenHelper {
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE offlineUsers (" +
                     "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "loggedIn BOOLEAN, " +
                     "username TEXT, " +
                     "password TEXT, " +
                     "email TEXT, " +

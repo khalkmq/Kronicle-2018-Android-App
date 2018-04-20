@@ -75,7 +75,12 @@ public class Settings extends AppCompatActivity {
                     startActivity(intent_about);
                     finish();
                 }
-
+                // if LOGOUT
+                if (itemId == R.id.logout_drawer) {
+                    Intent intent_about = new Intent(Settings.this, LogoutHandler.class);
+                    startActivity(intent_about);
+                    finish();
+                }
                 return true;
             }
         });

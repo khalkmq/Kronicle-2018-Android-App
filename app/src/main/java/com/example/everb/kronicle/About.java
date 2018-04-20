@@ -75,6 +75,12 @@ public class About extends AppCompatActivity {
                     // Selected Self : Nothing happens
                     return true;
                 }
+                // if LOGOUT
+                if (itemId == R.id.logout_drawer) {
+                    Intent intent_about = new Intent(About.this, LogoutHandler.class);
+                    startActivity(intent_about);
+                    finish();
+                }
 
                 return true;
             }

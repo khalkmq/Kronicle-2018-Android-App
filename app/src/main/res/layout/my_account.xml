@@ -30,24 +30,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="View Account"
-            android:layout_marginTop="60dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="20dp"/>
 
         <Button
             android:layout_marginTop="60dp"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="180dp"
             android:id="@+id/btnUpdate"
             android:text="Update"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:onClick="btnRefreshClick"/>
 
+        <Button
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="280dp"
+            android:id="@+id/btnDelete"
+            android:text="Delete"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:onClick="btnDeleteClick"/>
+
+        <Button
+            android:layout_marginTop="490dp"
+            android:layout_marginStart="90dp"
+            android:id="@+id/btnDeleteAccount"
+            android:text="Delete My Account"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:onClick="btnDeleteAccountClick"/>
+
+        <Button
+            android:layout_marginTop="540dp"
+            android:layout_marginStart="90dp"
+            android:id="@+id/btnLogOutAccount"
+            android:text="Log Out "
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:onClick="btnLogOutClick"/>
+
         <ScrollView
             android:id="@+id/scrollResults"
-            android:layout_width="360dp"
-            android:layout_height="460dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginStart="10dp">
+            android:layout_width="320dp"
+            android:layout_height="340dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginStart="30dp">
             <TextView
                 android:id="@+id/lblResults"
                 android:layout_width="wrap_content"

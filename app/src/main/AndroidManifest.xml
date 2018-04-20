@@ -23,7 +23,11 @@
         </activity>
 
         <!-- Other Activities -->
-        <activity android:name=".LandingPage"
+        <activity
+            android:name=".LandingPage"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".LogoutHandler"
             android:theme="@style/AppTheme" />
 
         <!-- Main Activity -->

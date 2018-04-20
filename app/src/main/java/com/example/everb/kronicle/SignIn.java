@@ -13,57 +13,27 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class SignIn extends Fragment {
+
+    // Design Variables
     View view;
 
     // Database variables
     private SQLiteDatabase theDB;
-    private long rowid;
-    public static final String TAG = "LandingPage";
 
+    // Constructor
+    public SignIn() {}
 
-    private Button buttonGuest;
-
-
-    public SignIn() {
-
-    }
-
-    // onCreate Function
+    /** onCreate **/
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.sign_in, container, false);
 
         // Get a ASyncWritable database
-        // Replaced this with get activity
         UserDatabase.getInstance(getActivity().getApplicationContext()).asyncWritableDatabase(new UserDatabase.OnDBReadyListener() {
             @Override
             public void onDBReady(SQLiteDatabase db) {
                 theDB = db;
-            }
-        });
-
-        buttonGuest = view.findViewById(R.id.guest_sign_in_button_si);
-
-        buttonGuest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Creates Guest profile automatically, and redirects to MainActivity
-                ContentValues values = new ContentValues();
-                values.put("username", "guest");
-                values.put("password", "guest");
-                values.put("email", "guest");
-                values.put("birthdate", "guest");
-                long newRowId = theDB.insert("offlineUsers", null, values);
-
-                // Welcome the user!
-                Toast.makeText(getActivity(), getString(R.string.guest_toast), Toast.LENGTH_LONG).show();
-
-                // Go to the Main Page
-                startActivity(new Intent(getActivity(), MainActivity.class));
-
-                // Finish this activity
-                getActivity().finish();
             }
         });
 

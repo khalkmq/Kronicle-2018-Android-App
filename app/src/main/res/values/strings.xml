@@ -31,5 +31,6 @@
 
     <string name="exit_toast">Press BACK again to exit.</string>
     <string name="guest_toast">Account Created, Welcome Guest!</string>
+    <string name="logout">Log Out</string>
 
 </resources>

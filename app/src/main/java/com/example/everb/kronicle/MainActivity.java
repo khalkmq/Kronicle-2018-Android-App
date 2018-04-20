@@ -1,6 +1,8 @@
 package com.example.everb.kronicle;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.NavigationView;
@@ -15,6 +17,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Database stuff
+    SQLiteDatabase theDB;
 
     private NavigationView navigationView;
     private ViewPager viewPager;
@@ -74,7 +79,11 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent_about = new Intent(MainActivity.this, About.class);
                     startActivity(intent_about);
                 }
-
+                // if LOGOUT
+                if (itemId == R.id.logout_drawer) {
+                    Intent intent_about = new Intent(MainActivity.this, LogoutHandler.class);
+                    startActivity(intent_about);
+                }
                 return true;
             }
 
@@ -98,13 +107,20 @@ public class MainActivity extends AppCompatActivity {
     }
     /** END OF ONCREATE **/
 
-
     // Behaviour when app returns to this page
     @Override
     public void onResume() {
         super.onResume();
         // Re-Adjust the highlighted menu item (THIS OCCURS WHEN USER PRESSES 'Back')
         navigationView.getMenu().getItem(0).setChecked(true);
+
+        // Get a writable database
+        UserDatabase.getInstance(this).asyncWritableDatabase(new UserDatabase.OnDBReadyListener() {
+            @Override
+            public void onDBReady(SQLiteDatabase db) {
+                theDB = db;
+            }
+        });
     }
 
     // Drawer menu icon behaviour

@@ -1,5 +1,6 @@
 package com.example.everb.kronicle;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -84,6 +85,12 @@ public class MyAccount extends AppCompatActivity {
                     startActivity(intent_about);
                     finish();
                 }
+                // if LOGOUT
+                if (itemId == R.id.logout_drawer) {
+                    Intent intent_about = new Intent(MyAccount.this, LogoutHandler.class);
+                    startActivity(intent_about);
+                    finish();
+                }
 
                 return true;
             }
@@ -97,15 +104,26 @@ public class MyAccount extends AppCompatActivity {
 
     /** Refresh button behaviour **/
     public void btnRefreshClick(View view) {
+
+        // Check if an account is logged in
+        String[] projection = {"loggedIn"};
+        Cursor cursor = theDB.query("offlineUsers", projection, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            if(cursor.getInt(cursor.getColumnIndexOrThrow("loggedIn")) == 1)
+                Toast.makeText(getApplicationContext(), "BOOP MOFO", Toast.LENGTH_LONG).show();
+        }
+        cursor.close();
+
         StringBuffer sb = new StringBuffer();
-        String[] columns = {"_id", "username", "password", "email", "birthdate"};
+        String[] columns = {"_id", "loggedIn", "username", "password", "email", "birthdate"};
 
         Cursor c = theDB.query("offlineUsers", columns, null, null, null, null, "_id");
 
-        Toast.makeText(getApplicationContext(), "THIS PART WORKS", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Accounts Refreshed", Toast.LENGTH_LONG).show();
 
         while (c.moveToNext()) {
             sb.append("id: " + c.getLong(c.getColumnIndexOrThrow("_id")) + "\n");
+            sb.append("logged: " + c.getString(c.getColumnIndexOrThrow("loggedIn")) + "\n");
             sb.append(c.getString(c.getColumnIndexOrThrow("username")) + "\n");
             sb.append(c.getString(c.getColumnIndexOrThrow("password")) + "\n");
             sb.append(c.getString(c.getColumnIndexOrThrow("email")) + "\n");
@@ -116,6 +134,43 @@ public class MyAccount extends AppCompatActivity {
         c.close();
     }
 
+    /** Delete Button Behaviour **/
+    public void btnDeleteClick(View view) {
+        // Deletes everything.
+        theDB.delete("offlineUsers", null, null);
+    }
+
+    /** Delete Account Button Behaviour **/
+    public void btnDeleteAccountClick(View view) {
+        // Delete the account currently Logged in
+        theDB.delete("offlineUsers", "loggedIn" + "=" + "1" , null);
+
+        // Send a toast to the User
+        Toast.makeText(getApplicationContext(), "Account Successfully Deleted", Toast.LENGTH_LONG).show();
+
+        // Go to the Landing Page
+        startActivity(new Intent(this, LandingPage.class));
+
+        // Finish this activity
+        finish();
+    }
+
+    /** Log Out Button Behaviour **/
+    public void btnLogOutClick(View view) {
+        // Set Content
+        ContentValues values = new ContentValues();
+        values.put("loggedIn", false);
+        theDB.update("offlineUsers", values,"loggedIn = 1", null);
+
+        // Send a toast to the User
+        Toast.makeText(getApplicationContext(), "Logout Successful", Toast.LENGTH_LONG).show();
+
+        // Go to the Landing Page
+        startActivity(new Intent(this, LandingPage.class));
+
+        // Finish this activity
+        finish();
+    }
 
     // Behaviour when app returns to this page
     @Override
@@ -162,4 +217,5 @@ public class MyAccount extends AppCompatActivity {
         super.onPause();
         theDB.close();
     }
+
 }

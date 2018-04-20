@@ -167,8 +167,9 @@
         android:id="@+id/sign_up_button_su"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:width="300dp"
         android:height="50dp"
         android:background="@color/colorBase"
@@ -179,6 +180,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_password_su" />
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password_su"
+        android:onClick="btnSignUpClick"/>
 
 </android.support.constraint.ConstraintLayout>

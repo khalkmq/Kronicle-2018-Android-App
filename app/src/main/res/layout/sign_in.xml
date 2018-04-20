@@ -86,7 +86,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_si" />
+        app:layout_constraintTop_toBottomOf="@+id/password_si"
+        android:onClick="btnSignInClick"/>
 
     <Button
         android:id="@+id/forgot_password_button_si"
@@ -104,7 +105,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guest_sign_in_button_si"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_button_si" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button_si"
+        android:onClick="btnForgotPass"/>
 
     <Button
         android:id="@+id/guest_sign_in_button_si"
@@ -124,7 +126,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/forgot_password_button_si"
         app:layout_constraintTop_toTopOf="@+id/forgot_password_button_si"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:onClick="btnGuestClick"/>
 
     <View
         android:id="@+id/bar_left_si"
@@ -186,7 +189,8 @@
         app:layout_constraintEnd_toStartOf="@+id/google_button_si"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/or_text_si" />
+        app:layout_constraintTop_toBottomOf="@+id/or_text_si"
+        android:onClick="btnSignInFacebook"/>
 
     <Button
         android:id="@+id/google_button_si"
@@ -209,7 +213,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/facebook_button_si"
         app:layout_constraintTop_toTopOf="@+id/facebook_button_si"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:onClick="btnSignInGoogle"/>
 
 
 </android.support.constraint.ConstraintLayout>
