@@ -15,7 +15,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/username"
-        android:src="@drawable/icon_log_in"
+        android:src="@drawable/icon_sign_in"
         app:layout_constraintBottom_toBottomOf="@+id/username_si"
         app:layout_constraintEnd_toStartOf="@+id/username_si"
         app:layout_constraintHorizontal_bias="0.5"
