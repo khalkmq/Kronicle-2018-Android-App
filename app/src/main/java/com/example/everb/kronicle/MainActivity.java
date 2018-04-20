@@ -1,10 +1,10 @@
 package com.example.everb.kronicle;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.example.everb.kronicle.Habits.FragmentHabits;
+import com.example.everb.kronicle.Notes.FragmentNotes;
+import com.example.everb.kronicle.Timer.FragmentTimer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.icon_menu);
 
-        /****************************************************************/
         /** THIS SEGMENT IS RESPONSIBLE FOR MENU (HAMBURGER) BEHAVIOUR **/
         // Drawer-SideMenu Setup
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         // This will change the highlight once the other activity is opened
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                     // SAME FOR ALL: Set item to Highlight
                     menuItem.setChecked(true);

@@ -16,8 +16,21 @@
     <string name="facebook">Facebook</string>
     <string name="google">Google</string>
 
+    <!--Notes Strings-->
     <string name="notes">Notes</string>
+
+    <!--Timer Strings-->
     <string name="timer">Timer</string>
+    <string name="title_timer">Title</string>
+    <string name="focus_timer">Focus</string>
+    <string name="focus_time">2:00:00</string>
+    <string name="short_break_timer">Short Break</string>
+    <string name="short_break_time">3:00:00</string>
+    <string name="long_break_timer">Long Break</string>
+    <string name="long_break_time">4:00:00</string>
+
+
+    <!--Habits Strings-->
     <string name="habits">Habits</string>
 
     <string name="start">Start</string>
@@ -32,5 +45,6 @@
     <string name="exit_toast">Press BACK again to exit.</string>
     <string name="guest_toast">Account Created, Welcome Guest!</string>
     <string name="logout">Log Out</string>
+
 
 </resources>

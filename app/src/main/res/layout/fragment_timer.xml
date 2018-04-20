@@ -1,76 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Fragment Content -->
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:layout_editor_absoluteY="25dp">
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_timer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp">
+
+    </android.support.v7.widget.RecyclerView>
 
 
-    <TextView
-        android:id="@+id/next_countdown_text_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:text="00:00"
-        android:textAlignment="center"
-        android:textColor="@color/colorComplement"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/countdown_text_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="00:00"
-        android:textAlignment="center"
-        android:textColor="@color/colorComplement"
-        android:textSize="90sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/next_countdown_text_timer" />
-
-    <Button
-        android:id="@+id/start_button_timer"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:background="@android:color/transparent"
-        android:text="@string/start"
-        android:textColor="@color/colorBase"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countdown_text_timer"
-        tools:text="@string/start" />
-
-    <Button
-        android:id="@+id/reset_button_timer"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/transparent"
-        android:text="@string/reset"
-        android:textColor="@color/colorComplement"
-        android:textSize="30sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_button_timer"
-        tools:text="@string/reset"
-        tools:visibility="visible" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.everb.kronicle;
+package com.example.everb.kronicle.Habits;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.everb.kronicle.R;
+
 public class FragmentHabits extends Fragment{
 
-    View view;
+    private View view;
 
     // Constructor
     public FragmentHabits() {}
@@ -17,8 +19,10 @@ public class FragmentHabits extends Fragment{
     // onCreate Function
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        view = inflater.inflate(R.layout.fragment_habits,container,false);
+    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
+
+        view = inflater.inflate(R.layout.fragment_habits, container,false);
+
         return view;
     }
 }
