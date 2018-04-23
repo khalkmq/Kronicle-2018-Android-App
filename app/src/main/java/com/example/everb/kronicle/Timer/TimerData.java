@@ -2,17 +2,18 @@ package com.example.everb.kronicle.Timer;
 
 public class TimerData {
 
+    private int id;
     private String title;
-    private String color;
+//    private String color;
 
-    private long focus_duration;
-    private long short_break_duration;
-    private long long_break_duration;
-    private short long_break_wait;
-    private boolean session_auto_switch;
-    
+    private String focus_duration;
+    private String short_break_duration;
+    private String long_break_duration;
+    private String long_break_wait;
+//    private boolean session_auto_switch;
+//
 //    private  boolean screen_lock;
-
+//
 //    private boolean reminder;
 //
 //    private  boolean sb_enable_sound;
@@ -34,14 +35,21 @@ public class TimerData {
 
     public  TimerData() { }
 
-    public TimerData(String title, String color, long focus_duration, long short_break_duration, long long_break_duration, short long_break_wait, boolean session_auto_switch) {
+    public TimerData(int id, String title, String focus_duration, String short_break_duration, String long_break_duration, String long_break_wait) {
+        this.id = id;
         this.title = title;
-        this.color = color;
         this.focus_duration = focus_duration;
         this.short_break_duration = short_break_duration;
         this.long_break_duration = long_break_duration;
         this.long_break_wait = long_break_wait;
-        this.session_auto_switch = session_auto_switch;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -52,51 +60,35 @@ public class TimerData {
         this.title = title;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public long getFocus_duration() {
+    public String getFocus_duration() {
         return focus_duration;
     }
 
-    public void setFocus_duration(long focus_duration) {
+    public void setFocus_duration(String focus_duration) {
         this.focus_duration = focus_duration;
     }
 
-    public long getShort_break_duration() {
+    public String getShort_break_duration() {
         return short_break_duration;
     }
 
-    public void setShort_break_duration(long short_break_duration) {
+    public void setShort_break_duration(String short_break_duration) {
         this.short_break_duration = short_break_duration;
     }
 
-    public long getLong_break_duration() {
+    public String getLong_break_duration() {
         return long_break_duration;
     }
 
-    public void setLong_break_duration(long long_break_duration) {
+    public void setLong_break_duration(String long_break_duration) {
         this.long_break_duration = long_break_duration;
     }
 
-    public short getLong_break_wait() {
+    public String getLong_break_wait() {
         return long_break_wait;
     }
 
-    public void setLong_break_wait(short long_break_wait) {
+    public void setLong_break_wait(String long_break_wait) {
         this.long_break_wait = long_break_wait;
-    }
-
-    public boolean isSession_auto_switch() {
-        return session_auto_switch;
-    }
-
-    public void setSession_auto_switch(boolean session_auto_switch) {
-        this.session_auto_switch = session_auto_switch;
     }
 }

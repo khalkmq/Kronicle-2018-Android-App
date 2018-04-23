@@ -6,4 +6,95 @@
     android:layout_height="match_parent"
     tools:context=".Timer.TimerSettings">
 
+    <EditText
+        android:id="@+id/title_ts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="@string/timer_title"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/focus_ts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/focus_ts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="@string/focus_timer"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/short_break_ts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_ts" />
+
+    <EditText
+        android:id="@+id/short_break_ts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="@string/short_break_timer"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/long_break_ts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/focus_ts" />
+
+    <EditText
+        android:id="@+id/long_break_ts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="@string/long_break_timer"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/wait_long_break_ts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/short_break_ts" />
+
+    <EditText
+        android:id="@+id/wait_long_break_ts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="@string/repetition_before_long"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/submit_ts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/long_break_ts" />
+
+    <Button
+        android:id="@+id/submit_ts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@color/colorBase"
+        android:text="@string/submit"
+        android:textAlignment="center"
+        android:textColor="@color/colorLight"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wait_long_break_ts" />
 </android.support.constraint.ConstraintLayout>

@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="100dp"
     android:background="@drawable/linear_layout_style"
     android:orientation="vertical"
     android:layout_marginTop="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
     android:padding="5dp">
 
     <TextView
         android:id="@+id/title_tri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_timer"
+        android:text="@string/timer_title"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textColor="@color/colorBase"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <View
@@ -42,7 +45,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/focus_timer"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textColor="@color/colorBase"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/focus_time_tri"
@@ -51,6 +55,7 @@
                 android:gravity="center"
                 android:text="@string/focus_time"
                 android:textAlignment="center"
+                android:textColor="@color/colorComplement"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -75,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/short_break_timer"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textColor="@color/colorBase"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/short_break_time_tri"
@@ -84,6 +90,7 @@
                 android:gravity="center"
                 android:text="@string/short_break_time"
                 android:textAlignment="center"
+                android:textColor="@color/colorComplement"
                 android:textSize="24sp" />
         </LinearLayout>
 
@@ -107,7 +114,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/long_break_timer"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textColor="@color/colorBase"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/long_break_time_tri"
@@ -116,6 +124,7 @@
                 android:gravity="center"
                 android:text="@string/long_break_time"
                 android:textAlignment="center"
+                android:textColor="@color/colorComplement"
                 android:textSize="24sp" />
         </LinearLayout>
 

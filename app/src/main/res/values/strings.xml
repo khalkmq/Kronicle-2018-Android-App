@@ -21,10 +21,7 @@
 
     <!--Timer Strings-->
     <string name="timer">Timer</string>
-
-    <string name="title_timer">Title</string>
-    <string name="title_timer_key">Title for Timer</string>
-
+    <string name="timer_title">Title</string>
 
     <string name="focus_timer">Focus</string>
     <string name="focus_time">2:00:00</string>
@@ -34,14 +31,18 @@
 
     <string name="long_break_timer">Long Break</string>
     <string name="long_break_time">4:00:00</string>
+    <string name="repetition_before_long">Focus/Short Break Sessions before long break</string>
 
     <string name="start">Start</string>
     <string name="reset">Reset</string>
     <string name="pause">Pause</string>
 
     <!--Timer Settings-->
+    <string name="timer_settings">Timer Settings</string>
 
-
+    <string name="timer_title_key">Timer Title Key</string>
+    <string name="timer_title_summary">This sets the name of the Timer</string>
+    <string name="timer_title_settings">Title for the Timer</string>
 
 
     <!--Habits Strings-->
@@ -50,7 +51,6 @@
 
     <!--Settings-->
     <string name="general">General</string>
-
 
 
     <string name="home">Home</string>
@@ -62,6 +62,11 @@
     <string name="guest_toast">Account Created, Welcome Guest!</string>
     <string name="logout">Log Out</string>
     <string name="name">Name</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="set">Set</string>
+
+    <string name="submit">Submit</string>
 
 
 </resources>

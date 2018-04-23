@@ -19,7 +19,7 @@ public class UserDatabase extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "userInfo.db";
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     // Make a single instance of the database
     private static UserDatabase userDatabase;
     // Make Context instance
