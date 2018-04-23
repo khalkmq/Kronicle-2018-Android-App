@@ -105,29 +105,20 @@ public class MyAccount extends AppCompatActivity {
     /** Refresh button behaviour **/
     public void btnRefreshClick(View view) {
 
-        // Check if an account is logged in
-        String[] projection = {"loggedIn"};
-        Cursor cursor = theDB.query("offlineUsers", projection, null, null, null, null, null);
-        while (cursor.moveToNext()) {
-            if(cursor.getInt(cursor.getColumnIndexOrThrow("loggedIn")) == 1)
-                Toast.makeText(getApplicationContext(), "BOOP MOFO", Toast.LENGTH_LONG).show();
-        }
-        cursor.close();
-
         StringBuffer sb = new StringBuffer();
-        String[] columns = {"_id", "loggedIn", "username", "password", "email", "birthdate"};
+        String[] columns = {"_id", "loggedIn", "firstName", "username", "password", "email"};
 
         Cursor c = theDB.query("offlineUsers", columns, null, null, null, null, "_id");
 
         //Toast.makeText(getApplicationContext(), "Accounts Refreshed", Toast.LENGTH_LONG).show();
 
         while (c.moveToNext()) {
-            sb.append("id: " + c.getLong(c.getColumnIndexOrThrow("_id")) + "\n");
+            sb.append("id:     " + c.getLong(c.getColumnIndexOrThrow("_id")) + "\n");
             sb.append("logged: " + c.getString(c.getColumnIndexOrThrow("loggedIn")) + "\n");
-            sb.append(c.getString(c.getColumnIndexOrThrow("username")) + "\n");
-            sb.append(c.getString(c.getColumnIndexOrThrow("password")) + "\n");
-            sb.append(c.getString(c.getColumnIndexOrThrow("email")) + "\n");
-            sb.append(c.getString(c.getColumnIndexOrThrow("birthdate")) + "\n");
+            sb.append("name:   " + c.getString(c.getColumnIndexOrThrow("firstName")) + "\n");
+            sb.append("user:   " + c.getString(c.getColumnIndexOrThrow("username")) + "\n");
+            sb.append("pass:   " + c.getString(c.getColumnIndexOrThrow("password")) + "\n");
+            sb.append("email:  " + c.getString(c.getColumnIndexOrThrow("email")) + "\n");
             sb.append("---------------------------------------------------------------\n");
         }
        ((TextView) findViewById(R.id.lblResults)).setText(sb);

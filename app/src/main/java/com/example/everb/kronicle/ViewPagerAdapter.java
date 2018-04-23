@@ -24,17 +24,16 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
        return fragmentList.get(position);
     }
-
     @Override
     public int getCount() {
         return FragmentListTitles.size();
     }
-
     @Override
     public CharSequence getPageTitle(int position){
         return FragmentListTitles.get(position);
     }
 
+    // Fucntion to Add Fragment
     public void AddFragment(Fragment f, String t){
         fragmentList.add(f);
         FragmentListTitles.add(t);

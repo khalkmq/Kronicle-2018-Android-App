@@ -2,13 +2,16 @@ package com.example.everb.kronicle;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,14 +25,6 @@ public class LandingPage extends AppCompatActivity {
     private TabLayout tabLayout;
     private AppBarLayout appBarLayout;
     private ViewPager viewPager;
-
-    // Variables for input
-    EditText emailText;
-    EditText fullNameText;
-    EditText usernameText;
-    EditText birthDateText;
-    EditText passwordText;
-    EditText passwordConfirmText;
 
     /** On Create **/
     @Override
@@ -75,81 +70,6 @@ public class LandingPage extends AppCompatActivity {
         });
     }
 
-
-    /** Sign Up Button Click**/
-    public void btnSignUpClick(View view) {
-
-        // Reference the objects on the sign up page
-        emailText = view.findViewById (R.id.email_su);
-        fullNameText = view.findViewById (R.id.full_name_su);
-        usernameText = view.findViewById (R.id.username_su);
-        //birthDateText = view.findViewById (R.id.birth_date_su);
-        passwordText = view.findViewById(R.id.password_su);
-        passwordConfirmText = view.findViewById(R.id.confirm_password_su);
-
-        // Get the user's input and save it on strings
-        String email = emailText.getText().toString();
-        /**NOT USED YET**/ // String fullName = fullNameText.getText().toString();
-        String username = usernameText.getText().toString();
-        //String birthdate = birthDateText.getText().toString();
-        String password = passwordText.getText().toString();
-        String passwordConfirm = passwordConfirmText.getText().toString();
-
-        // Check if any EditText boxes is empty
-        if(username.equals("")) {
-            Toast.makeText(this.getApplicationContext(), "Username can not be empty", Toast.LENGTH_LONG).show();
-        }
-
-//        else if(birthdate.equals("")) {
-//            Toast.makeText(this.getApplicationContext(), "Birth Date can not be empty", Toast.LENGTH_LONG).show();
-//        }
-
-        else if(email.equals("")) {
-            Toast.makeText(this.getApplicationContext(), "Email can not be empty", Toast.LENGTH_LONG).show();
-        }
-
-        else if(password.equals("")) {
-            Toast.makeText(this.getApplicationContext(), "Password field can not be empty", Toast.LENGTH_LONG).show();
-        }
-
-        else if(passwordConfirm.equals("")) {
-            Toast.makeText(this.getApplicationContext(), "Please confirm your password", Toast.LENGTH_LONG).show();
-        }
-
-        // Check if the password and password confirmation match
-        else if(!password.equals(passwordConfirm)) {Toast.makeText(this.getApplicationContext(), "The passwords do not match", Toast.LENGTH_LONG).show();
-        }
-
-        /**    ----- INSERT CODE TO KEEP ACCOUNTS UNIQUE HERE -----    **/
-
-        // If the requirements are met the account will be created, and page with redirect to main page.
-
-        else
-        {
-            // The user's information will be saved in the Database
-            ContentValues values = new ContentValues();
-            values.put("loggedIn", true);
-            /** ADD ONE FOR NAMES TOO **/
-            values.put("username", username);
-            values.put("password", password);
-            values.put("email", email);
-            values.put("birthdate", "03/21/1995");
-            long newRowId = theDB.insert("offlineUsers", null, values);
-
-            // Welcome the user!
-            Toast.makeText(this.getApplicationContext(), "Account Created, Welcome " + username +"!", Toast.LENGTH_LONG).show();
-
-            // Go to the Main Page
-            startActivity(new Intent(LandingPage.this, MainActivity.class));
-        }
-    }
-
-    /** Sign In Button Click**/
-    public void btnSignInClick(View view) {
-        //Nothing happens so far.
-        Toast.makeText(getApplicationContext(), "Hello Sign In!", Toast.LENGTH_LONG).show();
-    }
-
     /** Sign In with Google Click **/
     public void btnSignInGoogle(View view) {
         //Nothing happens so far.
@@ -170,17 +90,46 @@ public class LandingPage extends AppCompatActivity {
 
     /** Join as a Guest Button Click **/
     public void btnGuestClick(View view) {
-        // Creates Guest profile automatically, and redirects to MainActivity
-        ContentValues values = new ContentValues();
-        values.put("loggedIn", true);
-        values.put("username", "guest");
-        values.put("password", "guest");
-        values.put("email", "guest");
-        values.put("birthdate", "guest");
-        long newRowId =  theDB.insert("offlineUsers", null, values);
 
-        // Welcome the user!
-        Toast.makeText(getApplicationContext(), "Account Created, Welcome Guest!", Toast.LENGTH_LONG).show();
+        // Check if a guest account already exists
+        String[] projection = {"username"};
+        Cursor cursor = theDB.query("offlineUsers", projection, null, null, null, null, null);
+
+        //Check for a guest account
+        boolean uniqueState = true;
+        while (cursor.moveToNext()) {
+            // A guest account exists
+            if (cursor.getString(cursor.getColumnIndexOrThrow("username")).equals("guest"))
+                uniqueState = false;
+        }
+        cursor.close();
+
+        // If user exists, log them in
+        if (uniqueState != true) {
+            // Set Content
+            ContentValues values = new ContentValues();
+            values.put("loggedIn", true);
+            String[] whereArgs ={"guest"};
+            theDB.update("offlineUsers", values,"username = ?", whereArgs);
+
+            // Welcome the user!
+            Toast.makeText(getApplicationContext(), "Welcome back, Guest!", Toast.LENGTH_LONG).show();
+        }
+
+        // Otherwise, register the account in the database
+        else {
+            // Creates Guest profile automatically
+            ContentValues values = new ContentValues();
+            values.put("loggedIn", true);
+            values.put("firstName", "guest");
+            values.put("username", "guest");
+            values.put("password", "guest");
+            values.put("email", "guest");
+            long newRowId = theDB.insert("offlineUsers", null, values);
+
+            // Welcome the user!
+            Toast.makeText(getApplicationContext(), "Account Created, Welcome Guest!", Toast.LENGTH_LONG).show();
+        }
 
         // Go to the Main Page
         startActivity(new Intent(getApplicationContext(), MainActivity.class));

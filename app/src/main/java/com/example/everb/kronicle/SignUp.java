@@ -2,6 +2,7 @@ package com.example.everb.kronicle;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,33 +10,106 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class SignUp extends Fragment {
+
+    // View
     View view;
-
-    public SignUp() {
-
-    }
-
-    // Variables for input
-//    EditText emailText;
-//    EditText fullNameText;
-//    EditText usernameText;
-//    EditText birthDateText;
-//    EditText passwordText;
-//    EditText passwordConfirmText;
-
     // Database files
     SQLiteDatabase theDB;
 
-    // onCreate Function
+    // Constructor
+    public SignUp() {}
+
+    /** onCreateView **/
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        // Inflate View
         view = inflater.inflate(R.layout.sign_up, container, false);
+
+        // Assign button to view and onClickListener
+        Button signUpBtn = view.findViewById(R.id.sign_up_button_su);
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+
+            /** THIS CONTROLS WHAT HAPPENS WHEN SIGN-UP IS CLICKED **/
+            @Override
+            public void onClick(View v) {
+
+                // Reference the objects on the sign up page
+                EditText emailText = view.findViewById(R.id.email_su);
+                EditText firstNameText = view.findViewById(R.id.first_name_su);
+                EditText usernameText = view.findViewById(R.id.username_su);
+                EditText passwordText = view.findViewById(R.id.password_su);
+                EditText passwordConfirmText = view.findViewById(R.id.confirm_password_su);
+
+                // Get the user's input and save it on strings
+                String email = emailText.getText().toString();
+                String firstName = firstNameText.getText().toString();
+                String username = usernameText.getText().toString();
+                String password = passwordText.getText().toString();
+                String passwordConfirm = passwordConfirmText.getText().toString();
+
+                // Check if any EditText boxes is empty
+                if (firstName.equals("")) {
+                    Toast.makeText(getContext().getApplicationContext(), "Name can not be empty", Toast.LENGTH_LONG).show(); return;
+                } else if (email.equals("")) {
+                    Toast.makeText(getContext().getApplicationContext(), "Email can not be empty", Toast.LENGTH_LONG).show(); return;
+                } else if (username.equals("")) {
+                    Toast.makeText(getContext().getApplicationContext(), "Username can not be empty", Toast.LENGTH_LONG).show(); return;
+                } else if (password.equals("")) {
+                    Toast.makeText(getContext().getApplicationContext(), "Password field can not be empty", Toast.LENGTH_LONG).show(); return;
+                } else if (passwordConfirm.equals("")) {
+                    Toast.makeText(getContext().getApplicationContext(), "Please confirm your password", Toast.LENGTH_LONG).show(); return;
+                }
+
+                // Check if the password and password confirmation match
+                else if (!password.equals(passwordConfirm)) {
+                    Toast.makeText(getContext().getApplicationContext(), "The passwords do not match", Toast.LENGTH_LONG).show(); return;
+                }
+
+                // Check if an account already exists
+                String[] projection = {"username"};
+                Cursor cursor = theDB.query("offlineUsers", projection, null, null, null, null, null);
+
+                //Check for any similar usernames
+                boolean uniqueState = true;
+                while (cursor.moveToNext()) {
+                    // An account with similar username exists!
+                    if (cursor.getString(cursor.getColumnIndexOrThrow("username")).equals(username))
+                        uniqueState = false;
+                }
+                cursor.close();
+
+                // If user is not unique, prompt a change in name
+                if (uniqueState != true) {
+                    Toast.makeText(getContext().getApplicationContext(), "This username is already in use", Toast.LENGTH_LONG).show(); return;
+                }
+                // Otherwise, register the account in the database
+                else {
+                    // The user's information will be saved in the Database
+                    ContentValues values = new ContentValues();
+                    values.put("loggedIn", true);
+                    values.put("firstName", firstName);
+                    values.put("username", username);
+                    values.put("password", password);
+                    values.put("email", email);
+                    long newRowId = theDB.insert("offlineUsers", null, values);
+
+                    // Welcome the user!
+                    Toast.makeText(getContext().getApplicationContext(), "Account Created, Welcome " + username + "!", Toast.LENGTH_LONG).show();
+
+                    // Go to the Main Page
+                    startActivity(new Intent(getActivity(), MainActivity.class));
+                }
+            }
+
+        }) ;
+
         return view;
     }
 
@@ -51,75 +125,6 @@ public class SignUp extends Fragment {
             }
         });
     }
-//
-//    /** When the sign up button is clicked **/
-//    public void btnSignUpClick(View view) {
-//
-//        // Reference the objects on the sign up page
-//        emailText = view.findViewById (R.id.email_su);
-//        fullNameText = view.findViewById (R.id.full_name_su);
-//        usernameText = view.findViewById (R.id.username_su);
-////      birthDateText = view.findViewById (R.id.birth_date_su);
-//        passwordText = view.findViewById(R.id.password_su);
-//        passwordConfirmText = view.findViewById(R.id.confirm_password_su);
-//
-//        // Get the user's input and save it on strings
-//        String email = emailText.getText().toString();
-//        String fullName = fullNameText.getText().toString();
-//        String username = usernameText.getText().toString();
-////      String birthdate = birthDateText.getText().toString();
-//        String password = passwordText.getText().toString();
-//        String passwordConfirm = passwordConfirmText.getText().toString();
-//
-//        // Check if any EditText boxes is empty
-//        if(username.equals("")) {
-//            Toast.makeText(getActivity().getApplicationContext(), "Username can not be empty", Toast.LENGTH_LONG).show();
-//        }
-//
-////        else if(birthdate.equals("")) {
-////            Toast.makeText(getActivity().getApplicationContext(), "Birth Date can not be empty", Toast.LENGTH_LONG).show();
-////        }
-//
-//        else if(email.equals("")) {
-//            Toast.makeText(getActivity().getApplicationContext(), "Email can not be empty", Toast.LENGTH_LONG).show();
-//        }
-//
-//        else if(password.equals("")) {
-//            Toast.makeText(getActivity().getApplicationContext(), "Password field can not be empty", Toast.LENGTH_LONG).show();
-//        }
-//
-//        else if(passwordConfirm.equals("")) {
-//            Toast.makeText(getActivity().getApplicationContext(), "Please confirm your password", Toast.LENGTH_LONG).show();
-//        }
-//
-//        // Check if the password and password confirmation match
-//        else if(!password.equals(passwordConfirm)) {Toast.makeText(getActivity().getApplicationContext(), "The passwords do not match", Toast.LENGTH_LONG).show();
-//        }
-//
-//        /**    ----- INSERT CODE TO KEEP ACCOUNTS UNIQUE HERE -----    **/
-//
-//        // If the requirements are met the account will be created, and page with redirect to main page.
-//
-//        else
-//        {
-//            // The user's information will be saved in the Database
-//            ContentValues values = new ContentValues();
-//            values.put("loggedIn", true);
-//            values.put("username", username);
-//            values.put("password", password);
-//            values.put("email", email);
-//
-//            // EDIT
-//            values.put("birthdate", "03/21/1995");
-//            long newRowId = theDB.insert("offlineUsers", null, values);
-//
-//            // Welcome the user!
-//            Toast.makeText(getActivity().getApplicationContext(), "Account Created, Welcome " + username +"!", Toast.LENGTH_LONG).show();
-//
-//            // Go to the Main Page
-//            startActivity(new Intent(getActivity(), MainActivity.class));
-//        }
-//    }
 
     /** When activity is paused **/
     @Override
@@ -127,4 +132,5 @@ public class SignUp extends Fragment {
         super.onPause();
         theDB.close();
     }
+
 }
