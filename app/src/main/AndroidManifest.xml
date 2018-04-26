@@ -51,7 +51,16 @@
             android:name=".About"
             android:label="@string/about"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".Timer.TimerSettings"></activity>
+
+        <activity
+            android:name=".Timer.TimerSettings"
+            android:label="@string/timer_settings"
+            android:theme="@style/TitleTheme" />
+
+        <activity
+            android:name=".Timer.TimerDisplay"
+            android:label="@string/timer"
+            android:theme="@style/TitleTheme"/>
     </application>
 
 </manifest>

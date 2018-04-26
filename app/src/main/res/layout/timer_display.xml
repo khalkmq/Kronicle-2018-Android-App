@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:background="@drawable/linear_layout_style"
-    android:orientation="vertical"
-    android:layout_marginTop="10dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:elevation="5dp"
-    android:padding="5dp"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:id="@+id/container">
+    android:layout_height="match_parent"
+    tools:context=".Timer.TimerDisplay">
 
-    <TextView
-        android:id="@+id/title_tri"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/timer_title"
-        android:textAlignment="center"
-        android:textColor="@color/colorBase"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 
     <View
         android:id="@+id/top_bar_tri"
@@ -28,12 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="5dp"
-        android:visibility="visible" />
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_tri" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar_tri">
 
 
         <LinearLayout
@@ -49,7 +47,7 @@
                 android:text="@string/focus_timer"
                 android:textAlignment="center"
                 android:textColor="@color/colorBase"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/focus_time_tri"
@@ -84,7 +82,7 @@
                 android:text="@string/short_break_timer"
                 android:textAlignment="center"
                 android:textColor="@color/colorBase"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/short_break_time_tri"
@@ -118,7 +116,7 @@
                 android:text="@string/long_break_timer"
                 android:textAlignment="center"
                 android:textColor="@color/colorBase"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/long_break_time_tri"
@@ -133,4 +131,20 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/title_tri"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/timer_title"
+        android:textAlignment="center"
+        android:textColor="@color/colorBase"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

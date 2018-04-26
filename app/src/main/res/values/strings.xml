@@ -68,5 +68,13 @@
 
     <string name="submit">Submit</string>
 
+    <string name="focus_timer_text">Focus Timer</string>
+    <string name="timer_title_text">Timer Title</string>
+    <string name="hours">Hours</string>
+    <string name="minutes">Minutes</string>
+    <string name="short_break_title">Short Break Timer</string>
+    <string name="timer_long_break_text">Long Break Timer</string>
+    <string name="sessions_long_break_text">Number of sessions before Long Break</string>
+
 
 </resources>

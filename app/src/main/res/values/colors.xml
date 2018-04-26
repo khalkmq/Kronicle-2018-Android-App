@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorBase">#001E53</color>
+    <color name="colorBase">#001e53</color>
     <color name="colorComplement">#00e6bc</color>
 
     <color name="colorLight">#FFFFFF</color>
