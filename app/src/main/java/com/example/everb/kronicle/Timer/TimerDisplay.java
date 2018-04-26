@@ -17,13 +17,19 @@ public class TimerDisplay extends AppCompatActivity {
     TextView timerLong;
     String longWait;
 
+    private long timeCountInMilliSeconds = 60000;
+
+    private enum TimerStatus {
+        STARTED,
+        STOPPED
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timer_display);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         String titleTimer = getIntent().getExtras().getString("title");
         String focusTimer = getIntent().getExtras().getString("focus");
