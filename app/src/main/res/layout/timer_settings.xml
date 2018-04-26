@@ -31,7 +31,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="@color/colorBase"
-        app:layout_constraintBottom_toTopOf="@+id/focus_hours_ts"
+        app:layout_constraintBottom_toTopOf="@+id/focus_ts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,75 +46,26 @@
         android:text="@string/focus_timer_text"
         android:textColor="@color/colorComplement"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/focus_hours_ts"
-        app:layout_constraintEnd_toEndOf="@+id/focus_minutes_text_ts"
+        app:layout_constraintBottom_toTopOf="@+id/focus_ts"
+        app:layout_constraintEnd_toEndOf="@+id/focus_ts"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/focus_hours_ts" />
+        app:layout_constraintStart_toStartOf="@+id/focus_ts" />
 
     <EditText
-        android:id="@+id/focus_hours_ts"
+        android:id="@+id/focus_ts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:ems="10"
-        android:inputType="number"
+        android:focusable="false"
+        android:inputType="none"
         android:textColor="@color/colorBase"
-        app:layout_constraintBottom_toTopOf="@+id/short_break_hours_ts"
-        app:layout_constraintEnd_toStartOf="@+id/focus_hours_text_ts"
+        app:layout_constraintBottom_toTopOf="@+id/short_break_ts"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_ts" />
-
-    <TextView
-        android:id="@+id/focus_hours_text_ts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/hours"
-        android:textColor="@color/colorBase"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/focus_hours_ts"
-        app:layout_constraintEnd_toStartOf="@+id/focus_minutes_ts"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/focus_hours_ts"
-        app:layout_constraintTop_toTopOf="@+id/focus_hours_ts"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/focus_minutes_ts"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@color/colorBase"
-        app:layout_constraintBottom_toBottomOf="@+id/focus_hours_ts"
-        app:layout_constraintEnd_toStartOf="@+id/focus_minutes_text_ts"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/focus_hours_text_ts"
-        app:layout_constraintTop_toTopOf="@+id/focus_hours_ts"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/focus_minutes_text_ts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/minutes"
-        android:textColor="@color/colorBase"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/focus_minutes_ts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/focus_minutes_ts"
-        app:layout_constraintTop_toTopOf="@+id/focus_minutes_ts"
-        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/short_break_title_ts"
@@ -125,75 +76,26 @@
         android:text="@string/short_break_title"
         android:textColor="@color/colorComplement"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/short_break_hours_ts"
-        app:layout_constraintEnd_toEndOf="@+id/short_break_minutes_text_ts"
+        app:layout_constraintBottom_toTopOf="@+id/short_break_ts"
+        app:layout_constraintEnd_toEndOf="@+id/short_break_ts"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/short_break_hours_ts" />
+        app:layout_constraintStart_toStartOf="@+id/short_break_ts" />
 
     <EditText
-        android:id="@+id/short_break_hours_ts"
+        android:id="@+id/short_break_ts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:ems="10"
-        android:inputType="number"
+        android:focusable="false"
+        android:inputType="none"
         android:textColor="@color/colorBase"
-        app:layout_constraintBottom_toTopOf="@+id/long_break_hours_ts"
-        app:layout_constraintEnd_toStartOf="@+id/short_break_hours_text_ts"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/focus_hours_ts" />
-
-    <TextView
-        android:id="@+id/short_break_hours_text_ts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/hours"
-        android:textColor="@color/colorBase"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/short_break_hours_ts"
-        app:layout_constraintEnd_toStartOf="@+id/short_break_minutes_ts"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/short_break_hours_ts"
-        app:layout_constraintTop_toTopOf="@+id/short_break_hours_ts"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/short_break_minutes_ts"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@color/colorBase"
-        app:layout_constraintBottom_toBottomOf="@+id/short_break_hours_ts"
-        app:layout_constraintEnd_toStartOf="@+id/short_break_minutes_text_ts"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/short_break_hours_text_ts"
-        app:layout_constraintTop_toTopOf="@+id/short_break_hours_ts"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/short_break_minutes_text_ts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/minutes"
-        android:textColor="@color/colorBase"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/short_break_minutes_ts"
+        app:layout_constraintBottom_toTopOf="@+id/long_break_ts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/short_break_minutes_ts"
-        app:layout_constraintTop_toTopOf="@+id/short_break_minutes_ts"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/focus_ts" />
 
     <TextView
         android:id="@+id/long_break_title_ts"
@@ -204,75 +106,26 @@
         android:text="@string/timer_long_break_text"
         android:textColor="@color/colorComplement"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/long_break_hours_ts"
-        app:layout_constraintEnd_toEndOf="@+id/long_break_minutes_text_ts"
+        app:layout_constraintBottom_toTopOf="@+id/long_break_ts"
+        app:layout_constraintEnd_toEndOf="@+id/long_break_ts"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/long_break_hours_ts" />
+        app:layout_constraintStart_toStartOf="@+id/long_break_ts" />
 
     <EditText
-        android:id="@+id/long_break_hours_ts"
+        android:id="@+id/long_break_ts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:ems="10"
-        android:inputType="number"
+        android:focusable="false"
+        android:inputType="none"
         android:textColor="@color/colorBase"
         app:layout_constraintBottom_toTopOf="@+id/wait_long_break_ts"
-        app:layout_constraintEnd_toStartOf="@+id/long_break_hours_text_ts"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/short_break_hours_ts" />
-
-    <TextView
-        android:id="@+id/long_break_hours_text_ts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/hours"
-        android:textColor="@color/colorBase"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/long_break_hours_ts"
-        app:layout_constraintEnd_toStartOf="@+id/long_break_minutes_ts"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/long_break_hours_ts"
-        app:layout_constraintTop_toTopOf="@+id/long_break_hours_ts"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/long_break_minutes_ts"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@color/colorBase"
-        app:layout_constraintBottom_toBottomOf="@+id/long_break_hours_ts"
-        app:layout_constraintEnd_toStartOf="@+id/long_break_minutes_text_ts"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/long_break_hours_text_ts"
-        app:layout_constraintTop_toTopOf="@+id/long_break_hours_ts"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/long_break_minutes_text_ts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/minutes"
-        android:textColor="@color/colorBase"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/long_break_minutes_ts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/long_break_minutes_ts"
-        app:layout_constraintTop_toTopOf="@+id/long_break_minutes_ts"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/short_break_ts" />
 
     <TextView
         android:id="@+id/long_break_title_ts2"
@@ -301,14 +154,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/long_break_hours_ts" />
+        app:layout_constraintTop_toBottomOf="@+id/long_break_ts" />
 
     <Button
         android:id="@+id/submit_ts"
-        android:layout_width="0dp"
+        android:layout_width="344dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
         android:background="@color/colorBase"
         android:text="@string/submit"
         android:textAlignment="center"

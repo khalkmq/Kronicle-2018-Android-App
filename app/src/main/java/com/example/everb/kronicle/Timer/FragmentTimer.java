@@ -51,21 +51,19 @@ public class FragmentTimer extends Fragment {
             }
         });
 
-        initViews();
-        initObjects();
+        startViews();
+        startObjects();
 
         return view;
     }
 
-    private void initViews() {
+    private void startViews() {
         titleTimer = view.findViewById(R.id.title_tri);
         recyclerViewTimer = view.findViewById(R.id.recycler_view_timer);
     }
 
-    /**
-     * This method is to initialize objects to be used
-     */
-    private void initObjects() {
+
+    private void startObjects() {
         listTimer = new ArrayList<>();
         timerAdapter = new RecyclerViewAdapterTimer(listTimer);
 
@@ -75,13 +73,11 @@ public class FragmentTimer extends Fragment {
         recyclerViewTimer.setHasFixedSize(true);
         recyclerViewTimer.setAdapter(timerAdapter);
         timerDatabase = new TimerDatabase(getActivity());
-        getDataFromSQLite();
+        getDataSQLite();
     }
 
-    /**
-     * This method is to fetch all user records from SQLite
-     */
-    private void getDataFromSQLite() {
+
+    private void getDataSQLite() {
         // AsyncTask is used that SQLite operation not blocks the UI Thread.
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -100,23 +96,8 @@ public class FragmentTimer extends Fragment {
         }.execute();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        startObjects();    }
 }
