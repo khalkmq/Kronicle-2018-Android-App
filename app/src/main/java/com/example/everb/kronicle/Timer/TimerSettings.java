@@ -27,6 +27,7 @@ public class TimerSettings extends AppCompatActivity{
     private Button submitTimer;
     private TimerDatabase timerDatabase;
     private TimerData timerData;
+
     TimePickerDialog timePickerDialog;
     Calendar calendar;
     int getHour;
@@ -63,29 +64,49 @@ public class TimerSettings extends AppCompatActivity{
             }
         });
 
+        shortTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clock(shortTimer);
+            }
+        });
 
-
-
+        longTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clock(longTimer);
+            }
+        });
 
         submitTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                timerData.setTitle(titleTimer.getText().toString().trim());
-                timerData.setFocus_duration(focusTimer.getText().toString().trim());
-                timerData.setShort_break_duration(shortTimer.getText().toString().trim());
-                timerData.setLong_break_duration(longTimer.getText().toString().trim());
-                timerData.setLong_break_wait(longWaitTimer.getText().toString().trim());
+                if (titleTimer.getText().toString().trim().equals("") ||
+                    focusTimer.getText().toString().trim().equals("") ||
+                    shortTimer.getText().toString().trim().equals("") ||
+                    longTimer.getText().toString().trim().equals("") ||
+                    longWaitTimer.getText().toString().trim().equals("")) {
 
+                    Toast.makeText(getApplicationContext(), "No field can be empty", Toast.LENGTH_LONG).show();
+                }
 
-                timerDatabase.addTimer(timerData);
+                else {
+                    timerData.setTitle(titleTimer.getText().toString().trim());
+                    timerData.setFocus_duration(focusTimer.getText().toString().trim());
+                    timerData.setShort_break_duration(shortTimer.getText().toString().trim());
+                    timerData.setLong_break_duration(longTimer.getText().toString().trim());
+                    timerData.setLong_break_wait(longWaitTimer.getText().toString().trim());
 
+                    timerDatabase.addTimer(timerData);
 
-                Toast.makeText(getApplicationContext(), "New Timer Added", Toast.LENGTH_LONG).show();
-                finish();
+                    Toast.makeText(getApplicationContext(), "New Timer Added", Toast.LENGTH_LONG).show();
+                    finish();
+                }
             }
         });
     }
+
 
     private void clock (final EditText text) {
         calendar = Calendar.getInstance();
@@ -115,9 +136,7 @@ public class TimerSettings extends AppCompatActivity{
                 else {
                     NavUtils.navigateUpFromSameTask(this);
                 }
-
                 return true;
-
                 default: return super.onOptionsItemSelected(item);
         }
     }
