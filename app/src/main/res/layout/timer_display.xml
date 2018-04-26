@@ -4,21 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Timer.TimerDisplay">
+    tools:context=".Timer.TimerDisplay"
+    tools:layout_editor_absoluteY="25dp">
 
+
+    <TextView
+        android:id="@+id/title_tri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/timer_title"
+        android:textAlignment="center"
+        android:textColor="@color/colorBase"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/top_bar_tri"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/top_bar_tri"
         style="@style/Divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_margin="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_tri" />
 
@@ -27,9 +40,9 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/timer_circle_progress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar_tri">
 
@@ -47,7 +60,7 @@
                 android:text="@string/focus_timer"
                 android:textAlignment="center"
                 android:textColor="@color/colorBase"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/focus_time_tri"
@@ -82,7 +95,7 @@
                 android:text="@string/short_break_timer"
                 android:textAlignment="center"
                 android:textColor="@color/colorBase"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/short_break_time_tri"
@@ -116,7 +129,7 @@
                 android:text="@string/long_break_timer"
                 android:textAlignment="center"
                 android:textColor="@color/colorBase"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/long_break_time_tri"
@@ -131,20 +144,32 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/title_tri"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/timer_title"
-        android:textAlignment="center"
-        android:textColor="@color/colorBase"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+    <ProgressBar
+        android:id="@+id/timer_circle_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/timer_circle_end"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="100"
+        android:progressDrawable="@drawable/timer_circle_start"
+        android:rotation="-90"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="00:01:00"
+        android:textColor="@color/colorBase"
+        android:textSize="40sp"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="406dp" />
 
 </android.support.constraint.ConstraintLayout>
