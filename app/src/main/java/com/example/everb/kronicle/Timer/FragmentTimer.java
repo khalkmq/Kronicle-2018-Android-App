@@ -22,8 +22,6 @@ public class FragmentTimer extends Fragment {
 
     View view;
 
-    private FragmentTimer activity = FragmentTimer.this;
-    private AppCompatTextView titleTimer;
     private RecyclerView recyclerViewTimer;
     private List<TimerData> listTimer;
     private RecyclerViewAdapterTimer timerAdapter;
@@ -58,7 +56,6 @@ public class FragmentTimer extends Fragment {
     }
 
     private void startViews() {
-        titleTimer = view.findViewById(R.id.title_tri);
         recyclerViewTimer = view.findViewById(R.id.recycler_view_timer);
     }
 

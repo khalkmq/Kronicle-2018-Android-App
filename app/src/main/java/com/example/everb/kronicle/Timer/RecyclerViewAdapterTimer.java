@@ -1,6 +1,5 @@
 package com.example.everb.kronicle.Timer;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import com.example.everb.kronicle.MainActivity;
 import com.example.everb.kronicle.R;
 
 public class RecyclerViewAdapterTimer extends RecyclerView.Adapter<RecyclerViewAdapterTimer.MyViewHolder>{
@@ -78,10 +76,10 @@ public class RecyclerViewAdapterTimer extends RecyclerView.Adapter<RecyclerViewA
         public MyViewHolder(View itemView) {
             super(itemView);
             view_container = itemView.findViewById(R.id.container);
-            timerTitle = itemView.findViewById(R.id.title_tri);
-            timerFocus = itemView.findViewById(R.id.focus_time_tri);
-            timerShort = itemView.findViewById(R.id.short_break_time_tri);
-            timerLong = itemView.findViewById(R.id.long_break_time_tri);
+            timerTitle = itemView.findViewById(R.id.title_td);
+            timerFocus = itemView.findViewById(R.id.focus_time_td);
+            timerShort = itemView.findViewById(R.id.short_break_time_td);
+            timerLong = itemView.findViewById(R.id.long_break_time_td);
         }
     }
 }

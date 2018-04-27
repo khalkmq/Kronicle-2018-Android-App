@@ -91,6 +91,15 @@ public class TimerSettings extends AppCompatActivity{
                     Toast.makeText(getApplicationContext(), "No field can be empty", Toast.LENGTH_LONG).show();
                 }
 
+                else if (titleTimer.getText().toString().trim().equals("00:00") ||
+                        focusTimer.getText().toString().trim().equals("00:00") ||
+                        shortTimer.getText().toString().trim().equals("00:00") ||
+                        longTimer.getText().toString().trim().equals("00:00") ||
+                        longWaitTimer.getText().toString().trim().equals("00:00")) {
+
+                    Toast.makeText(getApplicationContext(), "None of the timers can be 00:00", Toast.LENGTH_LONG).show();
+                }
+
                 else {
                     timerData.setTitle(titleTimer.getText().toString().trim());
                     timerData.setFocus_duration(focusTimer.getText().toString().trim());

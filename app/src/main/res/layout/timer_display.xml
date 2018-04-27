@@ -5,50 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Timer.TimerDisplay"
-    tools:layout_editor_absoluteY="25dp">
+    tools:layout_editor_absoluteY="81dp">
 
 
     <TextView
-        android:id="@+id/title_tri"
+        android:id="@+id/title_td"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:text="@string/timer_title"
         android:textAlignment="center"
         android:textColor="@color/colorBase"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/top_bar_tri"
+        app:layout_constraintBottom_toTopOf="@+id/top_bar_td"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/top_bar_tri"
+        android:id="@+id/top_bar_td"
         style="@style/Divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/title_td"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_tri" />
+        app:layout_constraintTop_toBottomOf="@+id/title_td" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/top_bar_tri2"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar_td"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar_tri">
+        app:layout_constraintTop_toBottomOf="@+id/top_bar_td">
 
 
         <LinearLayout
@@ -58,7 +61,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/focus_text_tri"
+                android:id="@+id/focus_text_td"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/focus_timer"
@@ -67,7 +70,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/focus_time_tri"
+                android:id="@+id/focus_time_td"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -93,7 +96,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/short_break_text_tri"
+                android:id="@+id/short_break_text_td"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/short_break_timer"
@@ -102,7 +105,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/short_break_time_tri"
+                android:id="@+id/short_break_time_td"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -127,7 +130,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/long_break_text_tri"
+                android:id="@+id/long_break_text_td"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/long_break_timer"
@@ -136,7 +139,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/long_break_time_tri"
+                android:id="@+id/long_break_time_td"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -149,166 +152,178 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/top_bar_tri2"
+        android:id="@+id/bottom_bar_td"
         style="@style/Divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/short_break_arrow_td"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/icon_pointer"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/focus_arrow_td"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/short_break_arrow_td"
+        android:src="@drawable/icon_pointer"
+        app:layout_constraintBottom_toBottomOf="@+id/short_break_arrow_td"
+        app:layout_constraintEnd_toStartOf="@+id/short_break_arrow_td"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/short_break_arrow_td"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/short_break_arrow_td"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/timer_circle_progress"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:src="@drawable/icon_pointer"
         app:layout_constraintBottom_toTopOf="@+id/timer_circle_progress"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/long_break_arrow_td"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar_tri2" />
+        app:layout_constraintStart_toEndOf="@+id/focus_arrow_td"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_bar_td" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/long_break_arrow_td"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_below="@+id/timer_circle_progress"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/icon_pointer"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/short_break_arrow_td"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/short_break_arrow_td"
+        app:layout_constraintTop_toTopOf="@+id/short_break_arrow_td"
         app:layout_constraintVertical_bias="1.0" />
 
     <ProgressBar
         android:id="@+id/timer_circle_progress"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_centerInParent="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/timer_circle_end"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/timer_circle_start"
         android:indeterminate="false"
         android:max="100"
         android:progress="100"
-        android:progressDrawable="@drawable/timer_circle_start"
-        android:rotation="-90"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        android:progressDrawable="@drawable/timer_circle_end"
+        android:rotation="90"
+        android:layoutDirection="rtl"
+        app:layout_constraintBottom_toTopOf="@+id/play_fab_td"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/focus_arrow_td" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/long_break_wait_text_td"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/timer_circle_progress"
+        android:layout_alignEnd="@+id/focus_arrow_td"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:text="Long Break Wait"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTime2"
+        app:layout_constraintBottom_toTopOf="@+id/play_fab_td"
         app:layout_constraintEnd_toEndOf="@+id/timer_circle_progress"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/timer_circle_progress"
         app:layout_constraintTop_toTopOf="@+id/timer_circle_progress"
-        app:layout_constraintVertical_bias="0.461" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <TextView
-        android:id="@+id/textViewTime2"
+        android:id="@+id/long_break_wait_td"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="00:01:00"
+        android:text="0"
         android:textColor="@color/colorBase"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTime"
-        app:layout_constraintEnd_toEndOf="@+id/timer_circle_progress"
-        app:layout_constraintStart_toStartOf="@+id/timer_circle_progress"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintBottom_toTopOf="@+id/current_timer_td"
+        app:layout_constraintEnd_toEndOf="@+id/long_break_wait_text_td"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/long_break_wait_text_td"
+        app:layout_constraintTop_toBottomOf="@+id/long_break_wait_text_td"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textViewTime"
+        android:id="@+id/current_timer_td"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="00:01:00"
+        android:text="00:00:00"
         android:textColor="@color/colorBase"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="@+id/timer_circle_progress"
         app:layout_constraintEnd_toEndOf="@+id/timer_circle_progress"
         app:layout_constraintStart_toStartOf="@+id/timer_circle_progress"
-        app:layout_constraintTop_toTopOf="@+id/timer_circle_progress"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/timer_circle_progress" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/play_fab_td"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignTop="@+id/pause_fav_td"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
         android:clickable="true"
         android:src="@drawable/icon_play"
+        app:backgroundTint="@color/colorBase"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton3"
+        app:layout_constraintEnd_toStartOf="@+id/pause_fav_td"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/floatingActionButton2"
+        app:layout_constraintStart_toEndOf="@+id/stop_fav_td"
         app:layout_constraintTop_toBottomOf="@+id/timer_circle_progress" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:id="@+id/stop_fav_td"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignEnd="@+id/focus_arrow_td"
+        android:layout_alignParentBottom="true"
         android:clickable="true"
         android:src="@drawable/icon_stop"
-        app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
+        app:backgroundTint="@color/colorBase"
+        app:layout_constraintBottom_toBottomOf="@+id/play_fab_td"
+        app:layout_constraintEnd_toStartOf="@+id/play_fab_td"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/floatingActionButton" />
+        app:layout_constraintTop_toTopOf="@+id/play_fab_td" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/pause_fav_td"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:clickable="true"
         android:src="@drawable/icon_pause"
-        app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton"
+        app:backgroundTint="@color/colorBase"
+        app:layout_constraintBottom_toBottomOf="@+id/play_fab_td"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
-        app:layout_constraintTop_toTopOf="@+id/floatingActionButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/play_fab_td"
+        app:layout_constraintTop_toTopOf="@+id/play_fab_td" />
 
 </android.support.constraint.ConstraintLayout>

@@ -13,7 +13,7 @@
     android:id="@+id/container">
 
     <TextView
-        android:id="@+id/title_tri"
+        android:id="@+id/title_td"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/timer_title"
@@ -23,7 +23,7 @@
         android:textStyle="bold" />
 
     <View
-        android:id="@+id/top_bar_tri"
+        android:id="@+id/top_bar_td"
         style="@style/Divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -52,7 +52,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/focus_time_tri"
+                android:id="@+id/focus_time_td"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -87,7 +87,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/short_break_time_tri"
+                android:id="@+id/short_break_time_td"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -121,7 +121,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/long_break_time_tri"
+                android:id="@+id/long_break_time_td"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
