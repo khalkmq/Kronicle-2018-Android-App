@@ -308,6 +308,7 @@
         android:layout_marginTop="8dp"
         android:clickable="true"
         android:src="@drawable/icon_reset"
+        android:visibility="invisible"
         app:backgroundTint="@color/colorBase"
         app:layout_constraintBottom_toBottomOf="@+id/timer_circle_progress"
         app:layout_constraintEnd_toEndOf="@+id/timer_circle_progress"

@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -38,6 +40,8 @@ public class TimerDisplay extends AppCompatActivity {
     private ImageView longBreakArrow;
     private CountDownTimer countDownTimer;
     private int longWaitChecker;
+    Animation fabOpen;
+    Animation fabClose;
 
     private long timeCountInMilliSeconds = 60000;
     private int tracker = 3;
@@ -59,6 +63,10 @@ public class TimerDisplay extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         startViews();
+
+        fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open);
+        fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close);
+
 
         titleTimer = getIntent().getExtras().getString("title");
         focusTimer = getIntent().getExtras().getString("focus");
@@ -180,12 +188,14 @@ public class TimerDisplay extends AppCompatActivity {
     }
 
     private void setFabStart() {
-        reset.setVisibility(View.VISIBLE);
+        reset.startAnimation(fabOpen);
+        reset.setClickable(true);
         play.setImageResource(R.drawable.icon_stop);
     }
 
     private void  setFabPause() {
-        reset.setVisibility(View.INVISIBLE);
+        reset.startAnimation(fabClose);
+        reset.setClickable(false);
         play.setImageResource(R.drawable.icon_play);
         stopTimer();
     }
