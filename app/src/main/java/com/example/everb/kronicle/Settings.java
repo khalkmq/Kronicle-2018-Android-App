@@ -58,7 +58,7 @@ public class Settings extends AppCompatPreferenceActivity {
             NotificationManager notification=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
             Notification notify = new Notification.Builder
                     (context).setContentTitle("NOTIFICATION").setContentText("THIS WORKS IDK").
-                    setContentTitle("KRONICLE").setSmallIcon(R.drawable.k_simple).build();
+                    setContentTitle("KRONICLE").setSmallIcon(R.drawable.k_simple2).build();
 
             notify.flags |= Notification.FLAG_AUTO_CANCEL;
             notification.notify(0, notify);
