@@ -57,7 +57,7 @@ public class Settings extends AppCompatPreferenceActivity {
         String body = null;
         try {
             body = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-            body = "\n\n-----------------------------\nPlease don't remove this information\n Device OS: Android \n Device OS version: " +
+            body = "\nPlease don't remove the following information\n Device OS: Android \n Device OS version: " +
                     Build.VERSION.RELEASE + "\n App Version: " + body + "\n Device Brand: " + Build.BRAND +
                     "\n Device Model: " + Build.MODEL + "\n Device Manufacturer: " + Build.MANUFACTURER;
         } catch (PackageManager.NameNotFoundException e) {
@@ -65,7 +65,7 @@ public class Settings extends AppCompatPreferenceActivity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("message/rfc822");
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"kronicle@gmail.com"});
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Query from android app");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "feedback for Kronicle");
         intent.putExtra(Intent.EXTRA_TEXT, body);
         context.startActivity(Intent.createChooser(intent, context.getString(R.string.choose_email_client)));
     }
