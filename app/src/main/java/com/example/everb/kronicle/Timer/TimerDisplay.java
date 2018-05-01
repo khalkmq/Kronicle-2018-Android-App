@@ -1,6 +1,7 @@
 package com.example.everb.kronicle.Timer;
 
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -31,20 +32,16 @@ public class TimerDisplay extends AppCompatActivity {
     private TextView currentTimer;
     private ProgressBar circleBar;
     private FloatingActionButton play;
-    private FloatingActionButton pause;
-    private FloatingActionButton stop;
     private FloatingActionButton reset;
     private ImageView focusArrow;
     private ImageView shortBreakArrow;
     private ImageView longBreakArrow;
     private CountDownTimer countDownTimer;
-
-    private int tracker;
     private int longWaitChecker;
 
-
-
     private long timeCountInMilliSeconds = 60000;
+    private int tracker = 3;
+
 
     private enum TimerStatus {
         STARTED,
@@ -76,13 +73,21 @@ public class TimerDisplay extends AppCompatActivity {
         longWait.setText(waitLong);
         currentTimer.setText(focusTimer);
         longWaitChecker = Integer.parseInt(waitLong);
-        tracker = 3;
+
+        reset.setVisibility(View.INVISIBLE);
 
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 timer();
+            }
+        });
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
             }
         });
     }
@@ -96,8 +101,7 @@ public class TimerDisplay extends AppCompatActivity {
         currentTimer = findViewById(R.id.current_timer_td);
         circleBar = findViewById(R.id.timer_circle_progress);
         play = findViewById(R.id.play_fab_td);
-        pause = findViewById(R.id.pause_fav_td);
-        stop = findViewById(R.id.stop_fav_td);
+        reset = findViewById(R.id.reset_fav_td);
         focusArrow = findViewById(R.id.focus_arrow_td);
         shortBreakArrow = findViewById(R.id.short_break_arrow_td);
         longBreakArrow = findViewById(R.id.long_break_arrow_td);
@@ -105,6 +109,7 @@ public class TimerDisplay extends AppCompatActivity {
 
     private void timer() {
         if (timerStatus == TimerStatus.STOPPED) {
+            timerStatus = TimerStatus.STARTED;
             setTimer();
             setCircleBar();
             setFabStart();
@@ -112,9 +117,9 @@ public class TimerDisplay extends AppCompatActivity {
         }
 
         else {
+            timerStatus = TimerStatus.STOPPED;
             setFabPause();
         }
-
     }
 
     private void setTimer() {
@@ -175,26 +180,18 @@ public class TimerDisplay extends AppCompatActivity {
     }
 
     private void setFabStart() {
-//        reset.setVisibility(View.VISIBLE);
-        // changing play icon to stop icon
+        reset.setVisibility(View.VISIBLE);
         play.setImageResource(R.drawable.icon_stop);
-        // changing the timer status to started
-        timerStatus = TimerStatus.STARTED;
-        // call to start the count down timer
     }
 
     private void  setFabPause() {
-        // hiding the reset icon
-//        reset.setVisibility(View.GONE);
-        // changing stop icon to start icon
+        reset.setVisibility(View.INVISIBLE);
         play.setImageResource(R.drawable.icon_play);
-        // changing the timer status to stopped
-        timerStatus = TimerStatus.STOPPED;
         stopTimer();
-
     }
 
     private void reset() {
+        tracker += 1;
         stopTimer();
         startTimer();
     }
@@ -230,12 +227,6 @@ public class TimerDisplay extends AppCompatActivity {
 
         countDownTimer.cancel();
     }
-
-    /**
-     * method to set circular progress bar values
-     */
-
-
 
     // Formats Timer to Display Hours, Minutes, and Seconds
     private String setTimeFormat(long milliSeconds) {
