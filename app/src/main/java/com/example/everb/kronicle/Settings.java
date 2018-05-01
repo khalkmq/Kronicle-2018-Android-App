@@ -1,122 +1,72 @@
 package com.example.everb.kronicle;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.content.pm.PackageManager;
+
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+
 import android.view.MenuItem;
 
-public class Settings extends AppCompatActivity {
-
-    private DrawerLayout mDrawerLayout;
-    NavigationView navigationView;
+public class Settings extends AppCompatPreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
-
-        // Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar_ma);
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.icon_menu);
-
-        /****************************************************************/
-        /** THIS SEGMENT IS RESPONSIBLE FOR MENU (HAMBURGER) BEHAVIOUR **/
-        // Drawer-SideMenu Setup
-        mDrawerLayout = findViewById(R.id.drawer_layout_ma);
-        navigationView = findViewById(R.id.nav_view_ma);
-
-        // Activity will have its self selected initially:
-        navigationView.getMenu().getItem(2).setChecked(true);
-
-        // This will run activity and highlight item once the other activity is opened
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                // SAME FOR ALL: Set item to Highlight
-                menuItem.setChecked(true);
-                // SAME FOR ALL: Close Side menu once clicked
-                mDrawerLayout.closeDrawers();
-                // SAME FOR ALL: Determines which item was selected
-                int itemId = menuItem.getItemId();
-
-                // If HOME
-                if (itemId == R.id.home_drawer) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            finish();
-                        }
-                    }, 300);
-                }
-                // if MY ACCOUNT
-                if (itemId == R.id.my_account_drawer) {
-                    Intent intent_settings = new Intent(Settings.this, MyAccount.class);
-                    startActivity(intent_settings);
-                    finish();
-                }
-                // if SETTINGS
-                if (itemId == R.id.settings_drawer) {
-                    // Selected Self : Nothing happens
-                    return true;
-                }
-                // if ABOUT
-                if (itemId == R.id.about_drawer) {
-                    Intent intent_about = new Intent(Settings.this, About.class);
-                    startActivity(intent_about);
-                    finish();
-                }
-                // if LOGOUT
-                if (itemId == R.id.logout_drawer) {
-                    Intent intent_about = new Intent(Settings.this, LogoutHandler.class);
-                    startActivity(intent_about);
-                    finish();
-                }
-                return true;
-            }
-        });
-        /*********************| END OF MENU CHUNK |**********************/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-    } /** End of on-Create **/
+        getFragmentManager().beginTransaction().replace(android.R.id.content, new MainPreferenceFragment()).commit();
 
-    // Behaviour when app returns to this page
-    @Override
-    public void onResume() {
-        super.onResume();
-        // Re-Adjust the highlighted menu item (THIS OCCURS WHEN USER PRESSES 'Back')
-        navigationView.getMenu().getItem(2).setChecked(true);
     }
 
-    // Drawer menu icon behaviour
+    public static class MainPreferenceFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(final Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_main);
+
+
+
+            // feedback preference click listener
+            Preference myPref = findPreference(getString(R.string.key_send_feedback));
+            myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                public boolean onPreferenceClick(Preference preference) {
+                    sendFeedback(getActivity());
+                    return true;
+                }
+            });
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    // Closes drawer when back button is pressed, else it returns to main activity
-    @Override
-    public void onBackPressed() {
-        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            this.mDrawerLayout.closeDrawer(GravityCompat.START);
+    public static void sendFeedback(Context context) {
+        String body = null;
+        try {
+            body = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+            body = "\n\n-----------------------------\nPlease don't remove this information\n Device OS: Android \n Device OS version: " +
+                    Build.VERSION.RELEASE + "\n App Version: " + body + "\n Device Brand: " + Build.BRAND +
+                    "\n Device Model: " + Build.MODEL + "\n Device Manufacturer: " + Build.MANUFACTURER;
+        } catch (PackageManager.NameNotFoundException e) {
         }
-
-        else {
-            super.onBackPressed();
-        }
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"kronicle@gmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Query from android app");
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        context.startActivity(Intent.createChooser(intent, context.getString(R.string.choose_email_client)));
     }
 }

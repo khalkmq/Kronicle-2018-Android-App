@@ -77,4 +77,31 @@
     <string name="sessions_long_break_text">Number of sessions before Long Break</string>
 
 
+
+    <string name="notifications_new_message">New Message Notifications</string>
+    <string name="key_notifications_new_message_ringtone">New Message Ringtone</string>
+    <string name="summary_choose_ringtone">Choose Ringtone</string>
+    <string name="pref_title_ringtone">Ringtone</string>
+
+
+    <string name="key_vibrate">Vibrate</string>
+    <string name="summary_vibrate">Summary Vibrate</string>
+    <string name="title_vibrate">Title Vibrate</string>
+
+
+    <string name="pref_header_about">About</string>
+
+
+    <string name="summary_about">Kronicle is a timer and habit tracker that assists you by setting reminders for each habit
+        and allowing you to track the amount of time you have spent working towards making them part of your routine.</string>
+
+
+    <string name="app_version">Beta</string>
+    <string name="title_version">Version</string>
+    <string name="key_send_feedback">key_send_feedback</string>
+    <string name="summary_support">Want to report a problem or tell us how we can improve your experience?</string>
+    <string name="title_send_feedback">Send Feedback</string>
+
+    <string name="choose_email_client">Email Client</string>
+
 </resources>
