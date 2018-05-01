@@ -1,7 +1,6 @@
 package com.example.everb.kronicle.Timer;
 
 import android.os.CountDownTimer;
-import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -126,7 +125,7 @@ public class TimerDisplay extends AppCompatActivity {
 
         else {
             timerStatus = TimerStatus.STOPPED;
-            setFabPause();
+            setFabStop();
         }
     }
 
@@ -193,7 +192,7 @@ public class TimerDisplay extends AppCompatActivity {
         play.setImageResource(R.drawable.icon_stop);
     }
 
-    private void  setFabPause() {
+    private void setFabStop() {
         reset.startAnimation(fabClose);
         reset.setClickable(false);
         play.setImageResource(R.drawable.icon_play);
@@ -217,15 +216,9 @@ public class TimerDisplay extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
                 currentTimer.setText(setTimeFormat(timeCountInMilliSeconds));
-                // call to initialize the progress bar values
                 setCircleBar();
-                // hiding the reset icon
-//                reset.setVisibility(View.GONE);
-                // changing stop icon to start icon
                 play.setImageResource(R.drawable.icon_play);
-                // changing the timer status to stopped
                 timerStatus = TimerStatus.STOPPED;
             }
 
