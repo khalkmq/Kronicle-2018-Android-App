@@ -4,7 +4,7 @@
         <SwitchPreference
             android:defaultValue="true"
             android:key="@string/notifications_new_message"
-            android:title="Receive new Notifications" />
+            android:title="Receive Notifications" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="About">
